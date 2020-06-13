@@ -1,0 +1,117 @@
+HGNC ID	Approved symbol	Approved name	Status	Locus type	Previous symbols	Synonyms	Chromosome	NCBI Gene ID	Ensembl gene ID	Vega gene ID	Group ID	Group name
+HGNC:4715	HIST1H1A	histone cluster 1 H1 family member a	Approved	gene with protein product	H1F1	H1.1, H1a	6p22.2	3024	ENSG00000124610	OTTHUMG00000016413	864	Histones
+HGNC:4719	HIST1H1B	histone cluster 1 H1 family member b	Approved	gene with protein product	H1F5	H1.5, H1b, H1s-3	6p22.1	3009	ENSG00000184357	OTTHUMG00000016139	864	Histones
+HGNC:4716	HIST1H1C	histone cluster 1 H1 family member c	Approved	gene with protein product	H1F2	H1.2, H1s-1, H1c	6p22.2	3006	ENSG00000187837	OTTHUMG00000016140	864	Histones
+HGNC:4717	HIST1H1D	histone cluster 1 H1 family member d	Approved	gene with protein product	H1F3	H1.3, H1d, H1s-2	6p22.2	3007	ENSG00000124575	OTTHUMG00000014432	864	Histones
+HGNC:4718	HIST1H1E	histone cluster 1 H1 family member e	Approved	gene with protein product	H1F4	H1.4, H1e, H1s-4	6p22.2	3008	ENSG00000168298	OTTHUMG00000014422	864	Histones
+HGNC:19163	HIST1H1PS1	histone cluster 1 H1 pseudogene 1	Approved	pseudogene		dJ34B20.16, FLJ39701, H1F6P	6p22.2	387325	ENSG00000216331	OTTHUMG00000014431	864	Histones
+HGNC:4770	HIST1H1PS2	histone cluster 1 H1 pseudogene 2	Approved	pseudogene	H3FEP	pH3/e	6p22.2	10338	ENSG00000224447	OTTHUMG00000036301	864	Histones
+HGNC:4720	HIST1H1T	histone cluster 1 H1 family member t	Approved	gene with protein product	H1FT	H1t	6p22.2	3010	ENSG00000187475	OTTHUMG00000014430	864	Histones
+HGNC:18729	HIST1H2AA	histone cluster 1 H2A family member a	Approved	gene with protein product		bA317E16.2, H2AFR	6p22.2	221613	ENSG00000164508	OTTHUMG00000014407	864	Histones
+HGNC:4734	HIST1H2AB	histone cluster 1 H2A family member b	Approved	gene with protein product	H2AFM	H2A/m	6p22.2	8335	ENSG00000278463	OTTHUMG00000014420	864	Histones
+HGNC:4733	HIST1H2AC	histone cluster 1 H2A family member c	Approved	gene with protein product	H2AFL		6p22.2	8334	ENSG00000180573	OTTHUMG00000014428	864	Histones
+HGNC:4729	HIST1H2AD	histone cluster 1 H2A family member d	Approved	gene with protein product	H2AFG	H2A/g, H2A.3	6p22.2	3013	ENSG00000196866	OTTHUMG00000014437	864	Histones
+HGNC:4724	HIST1H2AE	histone cluster 1 H2A family member e	Approved	gene with protein product	H2AFA	H2A/a, H2A.1	6p22.2	3012	ENSG00000277075	OTTHUMG00000014440	864	Histones
+HGNC:4737	HIST1H2AG	histone cluster 1 H2A family member g	Approved	gene with protein product	H2AFP	pH2A/f, H2A/p, H2A.1b	6p22.1	8969	ENSG00000196787	OTTHUMG00000014469	864	Histones
+HGNC:13671	HIST1H2AH	histone cluster 1 H2A family member h	Approved	gene with protein product		H2AFALii, dJ86C11.1, H2A/S	6p22.1	85235	ENSG00000274997	OTTHUMG00000014468	864	Histones
+HGNC:4725	HIST1H2AI	histone cluster 1 H2A family member i	Approved	gene with protein product	H2AFC	H2A/c	6p22.1	8329	ENSG00000196747	OTTHUMG00000014484	864	Histones
+HGNC:4727	HIST1H2AJ	histone cluster 1 H2A family member j	Approved	gene with protein product	H2AFE	H2A/E	6p22.1	8331	ENSG00000276368	OTTHUMG00000014486	864	Histones
+HGNC:4726	HIST1H2AK	histone cluster 1 H2A family member k	Approved	gene with protein product	H2AFD	H2A/d	6p22.1	8330	ENSG00000275221	OTTHUMG00000016382	864	Histones
+HGNC:4730	HIST1H2AL	histone cluster 1 H2A family member l	Approved	gene with protein product	H2AFI	H2A/i, dJ193B12.9	6p22.1	8332	ENSG00000276903	OTTHUMG00000014492	864	Histones
+HGNC:4735	HIST1H2AM	histone cluster 1 H2A family member m	Approved	gene with protein product	H2AFN	H2A/n, H2A.1	6p22.1	8336	ENSG00000278677	OTTHUMG00000014494	864	Histones
+HGNC:18720	HIST1H2APS1	histone cluster 1 H2A pseudogene 1	Approved	pseudogene		bA317E16.5, H2AFSP	6p22.2	387319	ENSG00000216436	OTTHUMG00000014405	864	Histones
+HGNC:18804	HIST1H2APS2	histone cluster 1 H2A pseudogene 2	Approved	pseudogene	H2AFTP	dJ139G21.2, H2A/T	6p22.2	85303	ENSG00000242387	OTTHUMG00000187599	864	Histones
+HGNC:18805	HIST1H2APS3	histone cluster 1 H2A pseudogene 3	Approved	pseudogene		dJ34B20.8, H2AFUP	6p22.2	387323	ENSG00000218281	OTTHUMG00000014439	864	Histones
+HGNC:4732	HIST1H2APS4	histone cluster 1 H2A pseudogene 4	Approved	pseudogene	H2AFK, H2AFKP	pH2A/k, dJ34B20.2	6p22.2	8333	ENSG00000218690	OTTHUMG00000014438	864	Histones
+HGNC:4728	HIST1H2APS5	histone cluster 1 H2A pseudogene 5	Approved	pseudogene	H2AFFP	pH2A/f	6p22.2	10341	ENSG00000234816	OTTHUMG00000037055	864	Histones
+HGNC:18730	HIST1H2BA	histone cluster 1 H2B family member a	Approved	gene with protein product		bA317E16.3, STBP, TSH2B, H2BFU	6p22.2	255626	ENSG00000146047	OTTHUMG00000014408	864	Histones
+HGNC:4751	HIST1H2BB	histone cluster 1 H2B family member b	Approved	gene with protein product	H2BFF	H2B/f	6p22.2	3018	ENSG00000276410	OTTHUMG00000014421	864	Histones
+HGNC:4757	HIST1H2BC	histone cluster 1 H2B family member c	Approved	gene with protein product	H2BFL	H2B/l, H2B.1	6p22.2	8347	ENSG00000180596	OTTHUMG00000014425	864	Histones
+HGNC:4747	HIST1H2BD	histone cluster 1 H2B family member d	Approved	gene with protein product	H2BFB	H2B/b	6p22.2	3017	ENSG00000158373	OTTHUMG00000014426	864	Histones
+HGNC:4753	HIST1H2BE	histone cluster 1 H2B family member e	Approved	gene with protein product	H2BFH	H2B/h, H2B.h	6p22.2	8344	ENSG00000274290	OTTHUMG00000014427	864	Histones
+HGNC:4752	HIST1H2BF	histone cluster 1 H2B family member f	Approved	gene with protein product	H2BFG	H2B/g	6p22.2	8343	ENSG00000277224	OTTHUMG00000014445	864	Histones
+HGNC:4746	HIST1H2BG	histone cluster 1 H2B family member g	Approved	gene with protein product	H2BFA	H2B/a, H2B.1A	6p22.2	8339	ENSG00000273802	OTTHUMG00000014446	864	Histones
+HGNC:4755	HIST1H2BH	histone cluster 1 H2B family member h	Approved	gene with protein product	H2BFJ	H2B/j	6p22.2	8345	ENSG00000275713	OTTHUMG00000014447	864	Histones
+HGNC:4756	HIST1H2BI	histone cluster 1 H2B family member i	Approved	gene with protein product	H2BFK	H2B/k	6p22.2	8346	ENSG00000278588	OTTHUMG00000014448	864	Histones
+HGNC:4761	HIST1H2BJ	histone cluster 1 H2B family member j	Approved	gene with protein product	H2BFR	H2B/r	6p22.1	8970	ENSG00000124635	OTTHUMG00000014470	864	Histones
+HGNC:13954	HIST1H2BK	histone cluster 1 H2B family member k	Approved	gene with protein product	H2BFT	H2BFAiii	6p22.1	85236	ENSG00000197903	OTTHUMG00000014473	864	Histones
+HGNC:4748	HIST1H2BL	histone cluster 1 H2B family member l	Approved	gene with protein product	H2BFC	H2B/c, dJ97D16.4	6p22.1	8340	ENSG00000185130	OTTHUMG00000014485	864	Histones
+HGNC:4750	HIST1H2BM	histone cluster 1 H2B family member m	Approved	gene with protein product	H2BFE	H2B/e, dJ160A22.3	6p22.1	8342	ENSG00000273703	OTTHUMG00000014489	864	Histones
+HGNC:4749	HIST1H2BN	histone cluster 1 H2B family member n	Approved	gene with protein product	H2BFD	H2B/d	6p22.1	8341	ENSG00000233822	OTTHUMG00000016397	864	Histones
+HGNC:4758	HIST1H2BO	histone cluster 1 H2B family member o	Approved	gene with protein product	H2BFN	H2B/n, H2B.2	6p22.1	8348	ENSG00000274641	OTTHUMG00000014493	864	Histones
+HGNC:18719	HIST1H2BPS1	histone cluster 1 H2B pseudogene 1	Approved	pseudogene		bA317E16.4, H2BFVP	6p22.2	100288742	ENSG00000178762	OTTHUMG00000014406	864	Histones
+HGNC:4754	HIST1H2BPS2	histone cluster 1 H2B pseudogene 2	Approved	pseudogene	H2BFIP	pH2B/i	6p22.1	10340	ENSG00000217646	OTTHUMG00000014491	864	Histones
+HGNC:4766	HIST1H3A	histone cluster 1 H3 family member a	Approved	gene with protein product	H3FA	H3/A	6p22.2	8350	ENSG00000275714	OTTHUMG00000014418	864	Histones
+HGNC:4776	HIST1H3B	histone cluster 1 H3 family member b	Approved	gene with protein product	H3FL	H3/l	6p22.2	8358	ENSG00000274267	OTTHUMG00000014415	864	Histones
+HGNC:4768	HIST1H3C	histone cluster 1 H3 family member c	Approved	gene with protein product	H3FC	H3/c, H3.1	6p22.2	8352	ENSG00000278272	OTTHUMG00000014416	864	Histones
+HGNC:4767	HIST1H3D	histone cluster 1 H3 family member d	Approved	gene with protein product	H3FB	H3/b	6p22.2	8351	ENSG00000197409	OTTHUMG00000014433	864	Histones
+HGNC:4769	HIST1H3E	histone cluster 1 H3 family member e	Approved	gene with protein product	H3FD	H3/d, H3.1	6p22.2	8353	ENSG00000274750	OTTHUMG00000014434	864	Histones
+HGNC:4773	HIST1H3F	histone cluster 1 H3 family member f	Approved	gene with protein product	H3FI	H3/i	6p22.2	8968	ENSG00000277775	OTTHUMG00000014435	864	Histones
+HGNC:4772	HIST1H3G	histone cluster 1 H3 family member g	Approved	gene with protein product	H3FH	H3/h	6p22.2	8355	ENSG00000273983	OTTHUMG00000014436	864	Histones
+HGNC:4775	HIST1H3H	histone cluster 1 H3 family member h	Approved	gene with protein product	H3FK	H3/k, H3F1K	6p22.1	8357	ENSG00000278828	OTTHUMG00000014483	864	Histones
+HGNC:4771	HIST1H3I	histone cluster 1 H3 family member i	Approved	gene with protein product	H3FF	H3/f, H3.f	6p22.1	8354	ENSG00000275379	OTTHUMG00000016184	864	Histones
+HGNC:4774	HIST1H3J	histone cluster 1 H3 family member j	Approved	gene with protein product	H3FJ	H3/j	6p22.1	8356	ENSG00000197153	OTTHUMG00000016185	864	Histones
+HGNC:18982	HIST1H3PS1	histone cluster 1 H3 pseudogene 1	Approved	pseudogene		dJ45P21.6, H3F3AP1, p36	6p22.2	100289545	ENSG00000220875	OTTHUMG00000014455	864	Histones
+HGNC:4781	HIST1H4A	histone cluster 1 H4 family member a	Approved	gene with protein product	H4FA		6p22.2	8359	ENSG00000278637	OTTHUMG00000014419	864	Histones
+HGNC:4789	HIST1H4B	histone cluster 1 H4 family member b	Approved	gene with protein product	H4FI	H4/I	6p22.2	8366	ENSG00000278705	OTTHUMG00000014417	864	Histones
+HGNC:4787	HIST1H4C	histone cluster 1 H4 family member c	Approved	gene with protein product	H4FG	H4/g, dJ221C16.1	6p22.2	8364	ENSG00000197061	OTTHUMG00000014429	864	Histones
+HGNC:4782	HIST1H4D	histone cluster 1 H4 family member d	Approved	gene with protein product	H4FB	H4/b	6p22.2	8360	ENSG00000277157	OTTHUMG00000014423	864	Histones
+HGNC:4790	HIST1H4E	histone cluster 1 H4 family member e	Approved	gene with protein product	H4FJ	H4/j	6p22.2	8367	ENSG00000276966	OTTHUMG00000014441	864	Histones
+HGNC:4783	HIST1H4F	histone cluster 1 H4 family member f	Approved	gene with protein product	H4FC	H4/c, H4	6p22.2	8361	ENSG00000274618	OTTHUMG00000014443	864	Histones
+HGNC:4792	HIST1H4G	histone cluster 1 H4 family member g	Approved	gene with protein product	H4FL	H4/l	6p22.2	8369	ENSG00000275663	OTTHUMG00000014444	864	Histones
+HGNC:4788	HIST1H4H	histone cluster 1 H4 family member h	Approved	gene with protein product	H4FH	H4/h	6p22.2	8365	ENSG00000158406	OTTHUMG00000014454	864	Histones
+HGNC:4793	HIST1H4I	histone cluster 1 H4 family member i	Approved	gene with protein product	H4FM	H4/m	6p22.1	8294	ENSG00000276180	OTTHUMG00000014471	864	Histones
+HGNC:4785	HIST1H4J	histone cluster 1 H4 family member j	Approved	gene with protein product	H4FE	H4/e, H4F2iv	6p22.1	8363	ENSG00000197238	OTTHUMG00000014487	864	Histones
+HGNC:4784	HIST1H4K	histone cluster 1 H4 family member k	Approved	gene with protein product	H4FD	H4/d, H4F2iii, dJ160A22.1	6p22.1	8362	ENSG00000273542	OTTHUMG00000014488	864	Histones
+HGNC:4791	HIST1H4L	histone cluster 1 H4 family member l	Approved	gene with protein product	H4FK	H4.k, H4/k	6p22.1	8368	ENSG00000275126	OTTHUMG00000016211	864	Histones
+HGNC:4786	HIST1H4PS1	histone cluster 1 H4 pseudogene 1	Approved	pseudogene	H4FFP	pH4/f, dJ97D16.3	6p22.1	10337	ENSG00000217862	OTTHUMG00000016429	864	Histones
+HGNC:4736	HIST2H2AA3	histone cluster 2 H2A family member a3	Approved	gene with protein product	H2AFO, HIST2H2AA	H2A.2, H2A/q	1q21.2	8337	ENSG00000203812	OTTHUMG00000188678	864	Histones
+HGNC:29668	HIST2H2AA4	histone cluster 2 H2A family member a4	Approved	gene with protein product		H2A/r	1q21.2	723790	ENSG00000272196	OTTHUMG00000012097	864	Histones
+HGNC:20508	HIST2H2AB	histone cluster 2 H2A family member b	Approved	gene with protein product			1q21.2	317772	ENSG00000184270	OTTHUMG00000012085	864	Histones
+HGNC:4738	HIST2H2AC	histone cluster 2 H2A family member c	Approved	gene with protein product	H2A, H2AFQ	H2A/q	1q21.2	8338	ENSG00000184260	OTTHUMG00000035825	864	Histones
+HGNC:20560	HIST2H2BA	histone cluster 2 H2B family member a (pseudogene)	Approved	pseudogene			1p11.2	337875	ENSG00000223345	OTTHUMG00000040899	864	Histones
+HGNC:20654	HIST2H2BB	histone cluster 2 H2B family member b (pseudogene)	Approved	pseudogene			1q21.1	338391	ENSG00000240929	OTTHUMG00000012093	864	Histones
+HGNC:20516	HIST2H2BC	histone cluster 2 H2B family member c (pseudogene)	Approved	pseudogene		H2B/t	1q21.2	337873	ENSG00000261716	OTTHUMG00000035826	864	Histones
+HGNC:20517	HIST2H2BD	histone cluster 2 H2B family member d (pseudogene)	Approved	pseudogene	H2BFO	H2B/s, H2B/o	1q21.2	337874	ENSG00000220323	OTTHUMG00000035827	864	Histones
+HGNC:4760	HIST2H2BE	histone cluster 2 H2B family member e	Approved	gene with protein product	H2B, H2BFQ	H2B/q, H2B.1	1q21.2	8349	ENSG00000184678	OTTHUMG00000012095	864	Histones
+HGNC:24700	HIST2H2BF	histone cluster 2 H2B family member f	Approved	gene with protein product			1q21.2	440689	ENSG00000203814	OTTHUMG00000183159	864	Histones
+HGNC:20505	HIST2H3A	histone cluster 2 H3 family member a	Approved	gene with protein product		H3/n, H3/o	1q21.2	333932	ENSG00000203852	OTTHUMG00000012094	864	Histones
+HGNC:20503	HIST2H3C	histone cluster 2 H3 family member c	Approved	gene with protein product	H3F2, H3FM	MGC9629, H3/m, H3, H3.2, H3/M	1q21.2	126961	ENSG00000203811	OTTHUMG00000012190	864	Histones
+HGNC:25311	HIST2H3D	histone cluster 2 H3 family member d	Approved	gene with protein product			1q21.2	653604	ENSG00000183598	OTTHUMG00000012092	864	Histones
+HGNC:32060	HIST2H3PS2	histone cluster 2 H3 pseudogene 2	Approved	unknown		p06	1q21.1	440686	ENSG00000203818	OTTHUMG00000041033	864	Histones
+HGNC:4794	HIST2H4A	histone cluster 2 H4 family member a	Approved	gene with protein product	H4F2, H4FN, HIST2H4, H4/n		1q21.2	8370	ENSG00000270882	OTTHUMG00000012189	864	Histones
+HGNC:29607	HIST2H4B	histone cluster 2 H4 family member b	Approved	gene with protein product		H4/o	1q21.2	554313	ENSG00000270276	OTTHUMG00000188201	864	Histones
+HGNC:20507	HIST3H2A	histone cluster 3 H2A	Approved	gene with protein product		MGC3165	1q42.13	92815	ENSG00000181218	OTTHUMG00000040046	864	Histones
+HGNC:20515	HIST3H2BA	histone cluster 3 H2B family member a (pseudogene)	Approved	pseudogene			1q42.13	337872	ENSG00000181201	OTTHUMG00000040095	864	Histones
+HGNC:20514	HIST3H2BB	histone cluster 3 H2B family member b	Approved	gene with protein product			1q42.13	128312	ENSG00000196890	OTTHUMG00000040045	864	Histones
+HGNC:4778	HIST3H3	histone cluster 3 H3	Approved	gene with protein product	H3FT	H3t, H3/g, H3.4	1q42.13	8290	ENSG00000168148	OTTHUMG00000040044	864	Histones
+HGNC:20510	HIST4H4	histone cluster 4 H4	Approved	gene with protein product		MGC24116	12p12.3	121504	ENSG00000197837	OTTHUMG00000168735	864	Histones
+HGNC:24893	H1FNT	H1 histone family member N, testis specific	Approved	gene with protein product		HANP1, H1T2	12q13.11	341567	ENSG00000187166	OTTHUMG00000169904	864	Histones
+HGNC:18463	H1FOO	H1 histone family member O oocyte specific	Approved	gene with protein product			3q22.1	132243	ENSG00000178804	OTTHUMG00000159541	864	Histones
+HGNC:4722	H1FX	H1 histone family member X	Approved	gene with protein product		MGC15959, MGC8350, H1X	3q21.3	8971	ENSG00000184897	OTTHUMG00000159450	864	Histones
+HGNC:4714	H1F0	H1 histone family member 0	Approved	gene with protein product	H1FV	H10	22q13.1	3005	ENSG00000189060	OTTHUMG00000150659	864	Histones
+HGNC:22516	H2AFB1	H2A histone family member B1	Approved	gene with protein product			Xq28	474382	ENSG00000274183	OTTHUMG00000034291	864	Histones
+HGNC:18298	H2AFB2	H2A histone family member B2	Approved	gene with protein product			Xq28	474381	ENSG00000277858	OTTHUMG00000034292	864	Histones
+HGNC:14455	H2AFB3	H2A histone family member B3	Approved	gene with protein product	H2AFB		Xq28	83740	ENSG00000277745	OTTHUMG00000022670	864	Histones
+HGNC:14456	H2AFJ	H2A histone family member J	Approved	gene with protein product		FLJ10903, MGC921	12p12.3	55766	ENSG00000246705	OTTHUMG00000168736	864	Histones
+HGNC:20664	H2AFV	H2A histone family member V	Approved	gene with protein product	H2AV	MGC10170, MGC10831, MGC1947	7p13	94239	ENSG00000105968	OTTHUMG00000129217	864	Histones
+HGNC:31026	H2AFVP1	H2A histone family member V pseudogene 1	Approved	pseudogene	H2AFVP	HsT19970	15q26.1	654500	ENSG00000258741		864	Histones
+HGNC:4739	H2AFX	H2A histone family member X	Approved	gene with protein product	H2AX		11q23.3	3014	ENSG00000188486	OTTHUMG00000166196	864	Histones
+HGNC:4740	H2AFY	H2A histone family member Y	Approved	gene with protein product		macroH2A1.2	5q31.1	9555	ENSG00000113648	OTTHUMG00000129141	864	Histones
+HGNC:14453	H2AFY2	H2A histone family member Y2	Approved	gene with protein product		macroH2A2	10q22.1	55506	ENSG00000099284	OTTHUMG00000018396	864	Histones
+HGNC:4741	H2AFZ	H2A histone family member Z	Approved	gene with protein product	H2AZ	H2A.Z	4q23	3015	ENSG00000164032	OTTHUMG00000131048	864	Histones
+HGNC:4742	H2AFZP1	H2A histone family member Z pseudogene 1	Approved	pseudogene	H2AFZP		21q22.3	54049	ENSG00000213440	OTTHUMG00000086895	864	Histones
+HGNC:32279	H2AFZP2	H2A histone family member Z pseudogene 2	Approved	pseudogene			8q13.3	346990	ENSG00000253173		864	Histones
+HGNC:38013	H2AFZP3	H2A histone family member Z pseudogene 3	Approved	pseudogene			13q32.3	728023	ENSG00000218502	OTTHUMG00000017262	864	Histones
+HGNC:38015	H2AFZP4	H2A histone family member Z pseudogene 4	Approved	pseudogene			11q13.3	100462795	ENSG00000255329	OTTHUMG00000167302	864	Histones
+HGNC:38018	H2AFZP5	H2A histone family member Z pseudogene 5	Approved	pseudogene			10q22.3	100288330	ENSG00000234612	OTTHUMG00000018546	864	Histones
+HGNC:38019	H2AFZP6	H2A histone family member Z pseudogene 6	Approved	pseudogene			22q12.2	100462800	ENSG00000233733	OTTHUMG00000030795	864	Histones
+HGNC:27867	H2BFM	H2B histone family member M	Approved	gene with protein product			Xq22.2	286436	ENSG00000101812	OTTHUMG00000022122	864	Histones
+HGNC:4762	H2BFS	H2B histone family member S	Approved	gene with protein product			21q22.3	54145	ENSG00000234289	OTTHUMG00000086869	864	Histones
+HGNC:27252	H2BFWT	H2B histone family member W, testis specific	Approved	gene with protein product			Xq22.2	158983	ENSG00000123569	OTTHUMG00000022120	864	Histones
+HGNC:25757	H2BFXP	H2B histone family member X, pseudogene	Approved	pseudogene			Xq22.2	767811			864	Histones
+HGNC:4764	H3F3A	H3 histone family member 3A	Approved	gene with protein product	H3F3	H3.3A	1q42.12	3020	ENSG00000163041	OTTHUMG00000037507	864	Histones
+HGNC:31028	H3F3AP1	H3 histone family member 3A pseudogene 1	Approved	pseudogene		HsT18159, p48	15q15.1	654505	ENSG00000259389	OTTHUMG00000172418	864	Histones
+HGNC:19823	H3F3AP2	H3 histone family member 3A pseudogene 2	Approved	pseudogene		H3F3CP	14q11.2	664611	ENSG00000270433	OTTHUMG00000184412	864	Histones
+HGNC:4765	H3F3B	H3 histone family member 3B	Approved	gene with protein product		H3.3B	17q25.1	3021	ENSG00000132475	OTTHUMG00000179842	864	Histones
+HGNC:33164	H3F3C	H3 histone family member 3C	Approved	gene with protein product		H3.5	12p11.21	440093	ENSG00000188375	OTTHUMG00000157811	864	Histones

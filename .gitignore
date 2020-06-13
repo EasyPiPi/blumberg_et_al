@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.nohup.out
+*.pdf
+blumberg_et_al/
+*.png

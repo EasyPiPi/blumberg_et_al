@@ -1,0 +1,407 @@
+Structural equation model:
+
+# Measurement model
+
+latent_trans_ =~ 1 * K562_AB_1_PROseq
+K562_AB_1_PROseq ~~ residual_trans_ * K562_AB_1_PROseq
+K562_AB_1_PROseq ~ 0*1
+
+latent_trans_ =~ 1 * K562_AB_2_PROseq
+K562_AB_2_PROseq ~~ residual_trans_ * K562_AB_2_PROseq
+K562_AB_2_PROseq ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_1_RNAseq_ex
+total_RNA_1_RNAseq_ex ~~ residual_RNA_ * total_RNA_1_RNAseq_ex
+total_RNA_1_RNAseq_ex ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_2_RNAseq_ex
+total_RNA_2_RNAseq_ex ~~ residual_RNA_ * total_RNA_2_RNAseq_ex
+total_RNA_2_RNAseq_ex ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_3_RNAseq_ex
+total_RNA_3_RNAseq_ex ~~ residual_RNA_ * total_RNA_3_RNAseq_ex
+total_RNA_3_RNAseq_ex ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_4_RNAseq_ex
+total_RNA_4_RNAseq_ex ~~ residual_RNA_ * total_RNA_4_RNAseq_ex
+total_RNA_4_RNAseq_ex ~ 0*1
+
+# Regression model
+
+latent_trans_ ~ H3K27ac + H3K27me3 + H3K36me3 + H3K4me1 + H3K4me2 + H3K4me3 + H3K79me2 + H3K9ac + H3K9me1 + H3K9me3 + H4K20me1
+latent_RNA_ ~ 1 * latent_trans_ + H3K27ac + H3K27me3 + H3K36me3 + H3K4me1 + H3K4me2 + H3K4me3 + H3K79me2 + H3K9ac + H3K9me1 + H3K9me3 + H4K20me1
+latent_trans_ ~ 1
+latent_RNA_ ~ 1
+latent_trans_ ~~ latent_trans_
+latent_RNA_ ~~ latent_RNA_
+latent_RNA_ ~~ 0 * latent_trans_ 
+
+--------------------------------------
+
+Model summary:
+
+lavaan 0.6-5 ended normally after 61 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of free parameters                         32
+  Number of equality constraints                     4
+  Row rank of the constraints matrix                 4
+                                                      
+  Number of observations                           429
+                                                      
+Model Test User Model:
+                                                      
+  Test statistic                               312.902
+  Degrees of freedom                                65
+  P-value (Chi-square)                           0.000
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  latent_trans_ =~                                    
+    K562_AB_1_PROs    1.000                           
+    K562_AB_2_PROs    1.000                           
+  latent_RNA_ =~                                      
+    ttl_RNA_1_RNA_    1.000                           
+    ttl_RNA_2_RNA_    1.000                           
+    ttl_RNA_3_RNA_    1.000                           
+    ttl_RNA_4_RNA_    1.000                           
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  latent_trans_ ~                                     
+    H3K27ac           0.378    0.076    4.945    0.000
+    H3K27me3         -0.384    0.151   -2.549    0.011
+    H3K36me3          0.400    0.076    5.260    0.000
+    H3K4me1           0.035    0.083    0.415    0.678
+    H3K4me2          -0.348    0.111   -3.127    0.002
+    H3K4me3           0.193    0.127    1.519    0.129
+    H3K79me2          0.054    0.076    0.712    0.476
+    H3K9ac            0.123    0.142    0.869    0.385
+    H3K9me1           0.204    0.103    1.975    0.048
+    H3K9me3          -0.216    0.138   -1.562    0.118
+    H4K20me1          0.214    0.087    2.476    0.013
+  latent_RNA_ ~                                       
+    latent_trans_     1.000                           
+    H3K27ac          -0.248    0.085   -2.901    0.004
+    H3K27me3          0.457    0.168    2.713    0.007
+    H3K36me3         -0.160    0.085   -1.882    0.060
+    H3K4me1          -0.155    0.093   -1.668    0.095
+    H3K4me2           0.236    0.124    1.899    0.058
+    H3K4me3          -0.251    0.142   -1.768    0.077
+    H3K79me2          0.373    0.085    4.398    0.000
+    H3K9ac            0.071    0.159    0.445    0.656
+    H3K9me1          -0.187    0.115   -1.621    0.105
+    H3K9me3           0.121    0.155    0.784    0.433
+    H4K20me1         -0.351    0.097   -3.626    0.000
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+ .latent_trans_ ~~                                    
+   .latent_RNA_       0.000                           
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .K562_AB_1_PROs    0.000                           
+   .K562_AB_2_PROs    0.000                           
+   .ttl_RNA_1_RNA_    0.000                           
+   .ttl_RNA_2_RNA_    0.000                           
+   .ttl_RNA_3_RNA_    0.000                           
+   .ttl_RNA_4_RNA_    0.000                           
+   .latent_trans_     4.320    0.101   42.963    0.000
+   .latent_RNA_      -2.113    0.112  -18.795    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .K562_AB (rs__)    0.132    0.009   14.653    0.000
+   .K562_AB (rs__)    0.132    0.009   14.653    0.000
+   .t_RNA_1 (r_RN)    0.136    0.005   25.367    0.000
+   .t_RNA_2 (r_RN)    0.136    0.005   25.367    0.000
+   .t_RNA_3 (r_RN)    0.136    0.005   25.367    0.000
+   .t_RNA_4 (r_RN)    0.136    0.005   25.367    0.000
+   .ltnt_t_           2.562    0.179   14.281    0.000
+   .lt_RNA_           3.184    0.224   14.204    0.000
+
+$PE
+                      lhs op                   rhs           label exo
+1           latent_trans_ =~      K562_AB_1_PROseq                   0
+2        K562_AB_1_PROseq ~~      K562_AB_1_PROseq residual_trans_   0
+3        K562_AB_1_PROseq ~1                                         0
+4           latent_trans_ =~      K562_AB_2_PROseq                   0
+5        K562_AB_2_PROseq ~~      K562_AB_2_PROseq residual_trans_   0
+6        K562_AB_2_PROseq ~1                                         0
+7             latent_RNA_ =~ total_RNA_1_RNAseq_ex                   0
+8   total_RNA_1_RNAseq_ex ~~ total_RNA_1_RNAseq_ex   residual_RNA_   0
+9   total_RNA_1_RNAseq_ex ~1                                         0
+10            latent_RNA_ =~ total_RNA_2_RNAseq_ex                   0
+11  total_RNA_2_RNAseq_ex ~~ total_RNA_2_RNAseq_ex   residual_RNA_   0
+12  total_RNA_2_RNAseq_ex ~1                                         0
+13            latent_RNA_ =~ total_RNA_3_RNAseq_ex                   0
+14  total_RNA_3_RNAseq_ex ~~ total_RNA_3_RNAseq_ex   residual_RNA_   0
+15  total_RNA_3_RNAseq_ex ~1                                         0
+16            latent_RNA_ =~ total_RNA_4_RNAseq_ex                   0
+17  total_RNA_4_RNAseq_ex ~~ total_RNA_4_RNAseq_ex   residual_RNA_   0
+18  total_RNA_4_RNAseq_ex ~1                                         0
+19          latent_trans_  ~               H3K27ac                   0
+20          latent_trans_  ~              H3K27me3                   0
+21          latent_trans_  ~              H3K36me3                   0
+22          latent_trans_  ~               H3K4me1                   0
+23          latent_trans_  ~               H3K4me2                   0
+24          latent_trans_  ~               H3K4me3                   0
+25          latent_trans_  ~              H3K79me2                   0
+26          latent_trans_  ~                H3K9ac                   0
+27          latent_trans_  ~               H3K9me1                   0
+28          latent_trans_  ~               H3K9me3                   0
+29          latent_trans_  ~              H4K20me1                   0
+30            latent_RNA_  ~         latent_trans_                   0
+31            latent_RNA_  ~               H3K27ac                   0
+32            latent_RNA_  ~              H3K27me3                   0
+33            latent_RNA_  ~              H3K36me3                   0
+34            latent_RNA_  ~               H3K4me1                   0
+35            latent_RNA_  ~               H3K4me2                   0
+36            latent_RNA_  ~               H3K4me3                   0
+37            latent_RNA_  ~              H3K79me2                   0
+38            latent_RNA_  ~                H3K9ac                   0
+39            latent_RNA_  ~               H3K9me1                   0
+40            latent_RNA_  ~               H3K9me3                   0
+41            latent_RNA_  ~              H4K20me1                   0
+42          latent_trans_ ~1                                         0
+43            latent_RNA_ ~1                                         0
+44          latent_trans_ ~~         latent_trans_                   0
+45            latent_RNA_ ~~           latent_RNA_                   0
+46          latent_trans_ ~~           latent_RNA_                   0
+47                H3K27ac ~~               H3K27ac                   1
+48                H3K27ac ~~              H3K27me3                   1
+49                H3K27ac ~~              H3K36me3                   1
+50                H3K27ac ~~               H3K4me1                   1
+51                H3K27ac ~~               H3K4me2                   1
+52                H3K27ac ~~               H3K4me3                   1
+53                H3K27ac ~~              H3K79me2                   1
+54                H3K27ac ~~                H3K9ac                   1
+55                H3K27ac ~~               H3K9me1                   1
+56                H3K27ac ~~               H3K9me3                   1
+57                H3K27ac ~~              H4K20me1                   1
+58               H3K27me3 ~~              H3K27me3                   1
+59               H3K27me3 ~~              H3K36me3                   1
+60               H3K27me3 ~~               H3K4me1                   1
+61               H3K27me3 ~~               H3K4me2                   1
+62               H3K27me3 ~~               H3K4me3                   1
+63               H3K27me3 ~~              H3K79me2                   1
+64               H3K27me3 ~~                H3K9ac                   1
+65               H3K27me3 ~~               H3K9me1                   1
+66               H3K27me3 ~~               H3K9me3                   1
+67               H3K27me3 ~~              H4K20me1                   1
+68               H3K36me3 ~~              H3K36me3                   1
+69               H3K36me3 ~~               H3K4me1                   1
+70               H3K36me3 ~~               H3K4me2                   1
+71               H3K36me3 ~~               H3K4me3                   1
+72               H3K36me3 ~~              H3K79me2                   1
+73               H3K36me3 ~~                H3K9ac                   1
+74               H3K36me3 ~~               H3K9me1                   1
+75               H3K36me3 ~~               H3K9me3                   1
+76               H3K36me3 ~~              H4K20me1                   1
+77                H3K4me1 ~~               H3K4me1                   1
+78                H3K4me1 ~~               H3K4me2                   1
+79                H3K4me1 ~~               H3K4me3                   1
+80                H3K4me1 ~~              H3K79me2                   1
+81                H3K4me1 ~~                H3K9ac                   1
+82                H3K4me1 ~~               H3K9me1                   1
+83                H3K4me1 ~~               H3K9me3                   1
+84                H3K4me1 ~~              H4K20me1                   1
+85                H3K4me2 ~~               H3K4me2                   1
+86                H3K4me2 ~~               H3K4me3                   1
+87                H3K4me2 ~~              H3K79me2                   1
+88                H3K4me2 ~~                H3K9ac                   1
+89                H3K4me2 ~~               H3K9me1                   1
+90                H3K4me2 ~~               H3K9me3                   1
+91                H3K4me2 ~~              H4K20me1                   1
+92                H3K4me3 ~~               H3K4me3                   1
+93                H3K4me3 ~~              H3K79me2                   1
+94                H3K4me3 ~~                H3K9ac                   1
+95                H3K4me3 ~~               H3K9me1                   1
+96                H3K4me3 ~~               H3K9me3                   1
+97                H3K4me3 ~~              H4K20me1                   1
+98               H3K79me2 ~~              H3K79me2                   1
+99               H3K79me2 ~~                H3K9ac                   1
+100              H3K79me2 ~~               H3K9me1                   1
+101              H3K79me2 ~~               H3K9me3                   1
+102              H3K79me2 ~~              H4K20me1                   1
+103                H3K9ac ~~                H3K9ac                   1
+104                H3K9ac ~~               H3K9me1                   1
+105                H3K9ac ~~               H3K9me3                   1
+106                H3K9ac ~~              H4K20me1                   1
+107               H3K9me1 ~~               H3K9me1                   1
+108               H3K9me1 ~~               H3K9me3                   1
+109               H3K9me1 ~~              H4K20me1                   1
+110               H3K9me3 ~~               H3K9me3                   1
+111               H3K9me3 ~~              H4K20me1                   1
+112              H4K20me1 ~~              H4K20me1                   1
+113               H3K27ac ~1                                         1
+114              H3K27me3 ~1                                         1
+115              H3K36me3 ~1                                         1
+116               H3K4me1 ~1                                         1
+117               H3K4me2 ~1                                         1
+118               H3K4me3 ~1                                         1
+119              H3K79me2 ~1                                         1
+120                H3K9ac ~1                                         1
+121               H3K9me1 ~1                                         1
+122               H3K9me3 ~1                                         1
+123              H4K20me1 ~1                                         1
+              est          se           z       pvalue
+1    1.000000e+00 0.000000000          NA           NA
+2    1.319247e-01 0.009003134  14.6531964 0.000000e+00
+3    0.000000e+00 0.000000000          NA           NA
+4    1.000000e+00 0.000000000          NA           NA
+5    1.319247e-01 0.009003134  14.6531964 0.000000e+00
+6    0.000000e+00 0.000000000          NA           NA
+7    1.000000e+00 0.000000000          NA           NA
+8    1.363499e-01 0.005375026  25.3673018 0.000000e+00
+9    0.000000e+00 0.000000000          NA           NA
+10   1.000000e+00 0.000000000          NA           NA
+11   1.363499e-01 0.005375026  25.3673018 0.000000e+00
+12   0.000000e+00 0.000000000          NA           NA
+13   1.000000e+00 0.000000000          NA           NA
+14   1.363499e-01 0.005375026  25.3673018 0.000000e+00
+15   0.000000e+00 0.000000000          NA           NA
+16   1.000000e+00 0.000000000          NA           NA
+17   1.363499e-01 0.005375026  25.3673018 0.000000e+00
+18   0.000000e+00 0.000000000          NA           NA
+19   3.775433e-01 0.076341701   4.9454395 7.597227e-07
+20  -3.841195e-01 0.150705927  -2.5488018 1.080937e-02
+21   4.001566e-01 0.076069447   5.2604120 1.437330e-07
+22   3.452906e-02 0.083113310   0.4154457 6.778157e-01
+23  -3.478984e-01 0.111263516  -3.1267971 1.767218e-03
+24   1.932780e-01 0.127207918   1.5193869 1.286651e-01
+25   5.398244e-02 0.075805552   0.7121173 4.763922e-01
+26   1.233845e-01 0.142032991   0.8687031 3.850095e-01
+27   2.038605e-01 0.103235308   1.9747167 4.830030e-02
+28  -2.162627e-01 0.138422165  -1.5623418 1.182075e-01
+29   2.142733e-01 0.086550946   2.4756895 1.329792e-02
+30   1.000000e+00 0.000000000          NA           NA
+31  -2.475479e-01 0.085345500  -2.9005389 3.725216e-03
+32   4.570917e-01 0.168480299   2.7130275 6.667157e-03
+33  -1.600156e-01 0.085041135  -1.8816262 5.988678e-02
+34  -1.549790e-01 0.092915757  -1.6679522 9.532522e-02
+35   2.361525e-01 0.124386020   1.8985451 5.762431e-02
+36  -2.514708e-01 0.142210917  -1.7682946 7.701167e-02
+37   3.726915e-01 0.084746116   4.3977410 1.093834e-05
+38   7.068440e-02 0.158784471   0.4451594 6.562045e-01
+39  -1.871290e-01 0.115410959  -1.6214149 1.049287e-01
+40   1.212728e-01 0.154747781   0.7836803 4.332277e-01
+41  -3.508454e-01 0.096758830  -3.6259776 2.878703e-04
+42   4.319975e+00 0.100550174  42.9633738 0.000000e+00
+43  -2.112723e+00 0.112409138 -18.7949369 0.000000e+00
+44   2.561900e+00 0.179389125  14.2812473 0.000000e+00
+45   3.184231e+00 0.224178774  14.2039804 0.000000e+00
+46   0.000000e+00 0.000000000          NA           NA
+47   2.582919e+00 0.000000000          NA           NA
+48  -3.303716e-02 0.000000000          NA           NA
+49   7.065712e-01 0.000000000          NA           NA
+50   1.728471e-01 0.000000000          NA           NA
+51   1.675103e+00 0.000000000          NA           NA
+52   1.726951e+00 0.000000000          NA           NA
+53   1.715922e+00 0.000000000          NA           NA
+54   1.651407e+00 0.000000000          NA           NA
+55   3.013584e-01 0.000000000          NA           NA
+56   2.979834e-01 0.000000000          NA           NA
+57   6.595380e-01 0.000000000          NA           NA
+58   3.223128e-01 0.000000000          NA           NA
+59  -3.903417e-02 0.000000000          NA           NA
+60   1.890071e-01 0.000000000          NA           NA
+61   2.575217e-02 0.000000000          NA           NA
+62   2.654643e-02 0.000000000          NA           NA
+63  -5.641975e-02 0.000000000          NA           NA
+64   6.190125e-02 0.000000000          NA           NA
+65   1.200392e-01 0.000000000          NA           NA
+66   5.728595e-02 0.000000000          NA           NA
+67   1.194699e-01 0.000000000          NA           NA
+68   2.604187e+00 0.000000000          NA           NA
+69  -1.017941e-05 0.000000000          NA           NA
+70   9.294245e-01 0.000000000          NA           NA
+71   6.262907e-01 0.000000000          NA           NA
+72   1.929770e+00 0.000000000          NA           NA
+73   4.328137e-01 0.000000000          NA           NA
+74   7.571762e-01 0.000000000          NA           NA
+75   6.341057e-01 0.000000000          NA           NA
+76   1.298167e+00 0.000000000          NA           NA
+77   1.497990e+00 0.000000000          NA           NA
+78   5.066245e-01 0.000000000          NA           NA
+79   4.051003e-01 0.000000000          NA           NA
+80  -1.129835e-02 0.000000000          NA           NA
+81   7.908583e-01 0.000000000          NA           NA
+82   3.787289e-01 0.000000000          NA           NA
+83   2.265954e-02 0.000000000          NA           NA
+84   3.535901e-01 0.000000000          NA           NA
+85   2.108591e+00 0.000000000          NA           NA
+86   1.841320e+00 0.000000000          NA           NA
+87   1.867017e+00 0.000000000          NA           NA
+88   1.737261e+00 0.000000000          NA           NA
+89   6.360527e-01 0.000000000          NA           NA
+90   4.413188e-01 0.000000000          NA           NA
+91   1.068016e+00 0.000000000          NA           NA
+92   3.515422e+00 0.000000000          NA           NA
+93   2.182022e+00 0.000000000          NA           NA
+94   2.973763e+00 0.000000000          NA           NA
+95   1.895058e-01 0.000000000          NA           NA
+96   1.943218e-01 0.000000000          NA           NA
+97   1.107656e+00 0.000000000          NA           NA
+98   3.788570e+00 0.000000000          NA           NA
+99   1.641339e+00 0.000000000          NA           NA
+100  4.325403e-01 0.000000000          NA           NA
+101  5.801135e-01 0.000000000          NA           NA
+102  1.627158e+00 0.000000000          NA           NA
+103  3.015388e+00 0.000000000          NA           NA
+104  3.249932e-01 0.000000000          NA           NA
+105  1.334251e-01 0.000000000          NA           NA
+106  1.034569e+00 0.000000000          NA           NA
+107  1.099640e+00 0.000000000          NA           NA
+108  3.376169e-01 0.000000000          NA           NA
+109  7.028380e-01 0.000000000          NA           NA
+110  5.412138e-01 0.000000000          NA           NA
+111  3.989812e-01 0.000000000          NA           NA
+112  1.916906e+00 0.000000000          NA           NA
+113  5.689163e-01 0.000000000          NA           NA
+114 -2.941075e-01 0.000000000          NA           NA
+115  6.050573e-01 0.000000000          NA           NA
+116  1.605164e-01 0.000000000          NA           NA
+117  7.817389e-01 0.000000000          NA           NA
+118  7.065591e-01 0.000000000          NA           NA
+119  8.336111e-01 0.000000000          NA           NA
+120  6.380518e-01 0.000000000          NA           NA
+121  2.393228e-01 0.000000000          NA           NA
+122  9.157036e-02 0.000000000          NA           NA
+123  3.205095e-01 0.000000000          NA           NA
+
+
+--------------------------------------
+
+Model fitting:
+
+               npar                fmin               chisq                  df 
+             28.000               0.365             312.902              65.000 
+             pvalue      baseline.chisq         baseline.df     baseline.pvalue 
+              0.000            5306.675              81.000               0.000 
+                cfi                 tli                nnfi                 rfi 
+              0.953               0.941               0.941               0.927 
+                nfi                pnfi                 ifi                 rni 
+              0.941               0.755               0.953               0.953 
+               logl   unrestricted.logl                 aic                 bic 
+          -2843.927           -2687.476            5743.854            5857.575 
+             ntotal                bic2               rmsea      rmsea.ci.lower 
+            429.000            5768.720               0.094               0.084 
+     rmsea.ci.upper        rmsea.pvalue                 rmr          rmr_nomean 
+              0.105               0.000               0.986               1.039 
+               srmr        srmr_bentler srmr_bentler_nomean                crmr 
+              0.286               0.286               0.302               0.101 
+        crmr_nomean          srmr_mplus   srmr_mplus_nomean               cn_05 
+              0.073               0.194               0.191             117.292 
+              cn_01                 gfi                agfi                pgfi 
+            130.456               0.958               0.889               0.366 
+                mfi                ecvi 
+              0.749               0.860 

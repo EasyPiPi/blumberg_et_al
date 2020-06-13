@@ -1,0 +1,58 @@
+library(genomation)
+#setwd("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/clip_data/")
+
+bw_plus<-list.files(pattern = "*plus_rep1.bigWig")
+bw_plus_rep2<-list.files(pattern = "*plus_rep2.bigWig")
+bw_plus<-c(bw_plus,bw_plus_rep2)
+
+setwd("plots")
+windows_1 = readGeneric("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/matched_data/plus_TTS_2kb_ K562_updated_matched_spliced_protein_class_1.bed ",chr=1,start=2,end=3, strand=6,keep.all.metadata=FALSE, zero.based=F )
+windows_2 = readGeneric("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/matched_data/plus_TTS_2kb_ K562_updated_matched_spliced_protein_class_3.bed ",chr=1,start=2,end=3, strand=6 ,keep.all.metadata=FALSE, zero.based=F )
+windows_3 = readGeneric("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/matched_data/plus_TTS_2kb_ K562_updated_matched_spliced_protein_class_5.bed ",chr=1,start=2,end=3, strand=6 ,keep.all.metadata=FALSE, zero.based=F )
+
+for (BW in bw_plus) {
+# target_file="/local1/home/ablumber/K562/clip_data/IGF2BP2_plus_rep2.bigWig"
+# paste("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/clip_data/",BW,sep="")
+  target_file<- paste("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/clip_data/",BW,sep="")
+ scores_1 = ScoreMatrix(target = target_file ,windows=windows_1, type='bigWig', strand.aware=T)
+ scores_2 = ScoreMatrix(target = target_file ,windows=windows_2, type='bigWig', strand.aware=T)
+ scores_3 = ScoreMatrix(target = target_file ,windows=windows_3, type='bigWig', strand.aware=T)
+
+pdf_name<-paste(BW,".pdf",sep="")
+pdf(pdf_name)
+ylb<-paste(BW," signal",sep="")
+sml=new("ScoreMatrixList",list(a=scores_1,b=scores_2,c=scores_3))
+plotMeta(mat=sml,main="", xcoords = c(-1000,1000),dispersion="se", profile.names=c("Low stability"," Medium stability","High stability"), xlab="Position relative to TTS" ,ylab=ylb, line.col = rainbow(3, s = 1, v = 1,  start= 0.1, end = 1, alpha = 1), dispersion.col=rainbow(3, s = 1, v = 1, start = 0.1, end = 1, alpha = 0.25))
+dev.off()
+}
+
+
+library(genomation)
+setwd("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/clip_data/")
+
+ bw_minus<-list.files(pattern = "*minus_rep1.bigWig")
+bw_minus_rep2<-list.files(pattern = "*minus_rep2.bigWig")
+bw_minus<-c(bw_minus,bw_minus_rep2)
+
+setwd("plots")
+windows_1 = readGeneric("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/matched_data/minus_TTS_2kb_ K562_updated_matched_spliced_protein_class_1.bed ",chr=1,start=2,end=3, strand=6,keep.all.metadata=FALSE, zero.based=F )
+windows_2 = readGeneric("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/matched_data/minus_TTS_2kb_ K562_updated_matched_spliced_protein_class_3.bed ",chr=1,start=2,end=3, strand=6 ,keep.all.metadata=FALSE, zero.based=F )
+windows_3 = readGeneric("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/matched_data/minus_TTS_2kb_ K562_updated_matched_spliced_protein_class_5.bed ",chr=1,start=2,end=3, strand=6 ,keep.all.metadata=FALSE, zero.based=F )
+
+#pdf("mRNA_eCLIP_TTS.pdf")
+
+for (BW in bw_minus) {
+# target_file="/local1/home/ablumber/K562/clip_data/IGF2BP2_minus_rep2.bigWig"
+# paste("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/clip_data/",BW,sep="")
+  target_file<- paste("/mnt/grid/siepel/hpc_norepl/home/data/ablumber/clip_data/",BW,sep="")
+ scores_1 = ScoreMatrix(target = target_file ,windows=windows_1, type='bigWig', strand.aware=T)
+ scores_2 = ScoreMatrix(target = target_file ,windows=windows_2, type='bigWig', strand.aware=T)
+ scores_3 = ScoreMatrix(target = target_file ,windows=windows_3, type='bigWig', strand.aware=T)
+
+pdf_name<-paste(BW,".pdf",sep="")
+pdf(pdf_name)
+ylb<-paste(BW," signal",sep="")
+sml=new("ScoreMatrixList",list(a=scores_1,b=scores_2,c=scores_3))
+plotMeta(mat=sml,main="", xcoords = c(-1000,1000),dispersion="se", profile.names=c("Low stability"," Medium stability","High stability"), xlab="Position relative to TTS" ,ylab=ylb, line.col = rainbow(3, s = 1, v = 1,  start= 0.1, end = 1, alpha = 1), dispersion.col=rainbow(3, s = 1, v = 1, start = 0.1, end = 1, alpha = 0.25))
+dev.off()
+}

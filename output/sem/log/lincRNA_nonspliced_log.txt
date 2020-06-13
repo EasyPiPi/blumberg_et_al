@@ -1,0 +1,209 @@
+Structural equation model:
+
+# Measurement model
+
+latent_trans_ =~ 1 * K562_AB_1_PROseq
+K562_AB_1_PROseq ~~ residual_trans_ * K562_AB_1_PROseq
+K562_AB_1_PROseq ~ 0*1
+
+latent_trans_ =~ 1 * K562_AB_2_PROseq
+K562_AB_2_PROseq ~~ residual_trans_ * K562_AB_2_PROseq
+K562_AB_2_PROseq ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_1_RNAseq_ex
+total_RNA_1_RNAseq_ex ~~ residual_RNA_ * total_RNA_1_RNAseq_ex
+total_RNA_1_RNAseq_ex ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_2_RNAseq_ex
+total_RNA_2_RNAseq_ex ~~ residual_RNA_ * total_RNA_2_RNAseq_ex
+total_RNA_2_RNAseq_ex ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_3_RNAseq_ex
+total_RNA_3_RNAseq_ex ~~ residual_RNA_ * total_RNA_3_RNAseq_ex
+total_RNA_3_RNAseq_ex ~ 0*1
+
+latent_RNA_ =~ 1 * total_RNA_4_RNAseq_ex
+total_RNA_4_RNAseq_ex ~~ residual_RNA_ * total_RNA_4_RNAseq_ex
+total_RNA_4_RNAseq_ex ~ 0*1
+
+# Regression model
+
+latent_trans_ ~ gc_gene + len_gene
+latent_RNA_ ~ 1 * latent_trans_ + gc_gene + len_gene
+latent_trans_ ~ 1
+latent_RNA_ ~ 1
+latent_trans_ ~~ latent_trans_
+latent_RNA_ ~~ latent_RNA_
+latent_RNA_ ~~ 0 * latent_trans_ 
+
+--------------------------------------
+
+Model summary:
+
+lavaan 0.6-5 ended normally after 46 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of free parameters                         14
+  Number of equality constraints                     4
+  Row rank of the constraints matrix                 4
+                                                      
+  Number of observations                            77
+                                                      
+Model Test User Model:
+                                                      
+  Test statistic                                63.113
+  Degrees of freedom                                29
+  P-value (Chi-square)                           0.000
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  latent_trans_ =~                                    
+    K562_AB_1_PROs    1.000                           
+    K562_AB_2_PROs    1.000                           
+  latent_RNA_ =~                                      
+    ttl_RNA_1_RNA_    1.000                           
+    ttl_RNA_2_RNA_    1.000                           
+    ttl_RNA_3_RNA_    1.000                           
+    ttl_RNA_4_RNA_    1.000                           
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  latent_trans_ ~                                     
+    gc_gene           0.361    0.159    2.268    0.023
+    len_gene          0.351    0.159    2.202    0.028
+  latent_RNA_ ~                                       
+    latent_trans_     1.000                           
+    gc_gene          -0.409    0.185   -2.213    0.027
+    len_gene         -0.097    0.185   -0.527    0.598
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+ .latent_trans_ ~~                                    
+   .latent_RNA_       0.000                           
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .K562_AB_1_PROs    0.000                           
+   .K562_AB_2_PROs    0.000                           
+   .ttl_RNA_1_RNA_    0.000                           
+   .ttl_RNA_2_RNA_    0.000                           
+   .ttl_RNA_3_RNA_    0.000                           
+   .ttl_RNA_4_RNA_    0.000                           
+   .latent_trans_     6.392    0.155   41.363    0.000
+   .latent_RNA_      -4.125    0.179  -23.029    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .K562_AB (rs__)    0.312    0.050    6.238    0.000
+   .K562_AB (rs__)    0.312    0.050    6.238    0.000
+   .t_RNA_1 (r_RN)    0.094    0.009   10.747    0.000
+   .t_RNA_2 (r_RN)    0.094    0.009   10.747    0.000
+   .t_RNA_3 (r_RN)    0.094    0.009   10.747    0.000
+   .t_RNA_4 (r_RN)    0.094    0.009   10.747    0.000
+   .ltnt_t_           1.683    0.296    5.694    0.000
+   .lt_RNA_           2.292    0.397    5.778    0.000
+
+$PE
+                     lhs op                   rhs           label exo
+1          latent_trans_ =~      K562_AB_1_PROseq                   0
+2       K562_AB_1_PROseq ~~      K562_AB_1_PROseq residual_trans_   0
+3       K562_AB_1_PROseq ~1                                         0
+4          latent_trans_ =~      K562_AB_2_PROseq                   0
+5       K562_AB_2_PROseq ~~      K562_AB_2_PROseq residual_trans_   0
+6       K562_AB_2_PROseq ~1                                         0
+7            latent_RNA_ =~ total_RNA_1_RNAseq_ex                   0
+8  total_RNA_1_RNAseq_ex ~~ total_RNA_1_RNAseq_ex   residual_RNA_   0
+9  total_RNA_1_RNAseq_ex ~1                                         0
+10           latent_RNA_ =~ total_RNA_2_RNAseq_ex                   0
+11 total_RNA_2_RNAseq_ex ~~ total_RNA_2_RNAseq_ex   residual_RNA_   0
+12 total_RNA_2_RNAseq_ex ~1                                         0
+13           latent_RNA_ =~ total_RNA_3_RNAseq_ex                   0
+14 total_RNA_3_RNAseq_ex ~~ total_RNA_3_RNAseq_ex   residual_RNA_   0
+15 total_RNA_3_RNAseq_ex ~1                                         0
+16           latent_RNA_ =~ total_RNA_4_RNAseq_ex                   0
+17 total_RNA_4_RNAseq_ex ~~ total_RNA_4_RNAseq_ex   residual_RNA_   0
+18 total_RNA_4_RNAseq_ex ~1                                         0
+19         latent_trans_  ~               gc_gene                   0
+20         latent_trans_  ~              len_gene                   0
+21           latent_RNA_  ~         latent_trans_                   0
+22           latent_RNA_  ~               gc_gene                   0
+23           latent_RNA_  ~              len_gene                   0
+24         latent_trans_ ~1                                         0
+25           latent_RNA_ ~1                                         0
+26         latent_trans_ ~~         latent_trans_                   0
+27           latent_RNA_ ~~           latent_RNA_                   0
+28         latent_trans_ ~~           latent_RNA_                   0
+29               gc_gene ~~               gc_gene                   1
+30               gc_gene ~~              len_gene                   1
+31              len_gene ~~              len_gene                   1
+32               gc_gene ~1                                         1
+33              len_gene ~1                                         1
+             est          se           z       pvalue
+1   1.000000e+00 0.000000000          NA           NA
+2   3.115984e-01 0.049953850   6.2377247 4.439813e-10
+3   0.000000e+00 0.000000000          NA           NA
+4   1.000000e+00 0.000000000          NA           NA
+5   3.115984e-01 0.049953850   6.2377247 4.439813e-10
+6   0.000000e+00 0.000000000          NA           NA
+7   1.000000e+00 0.000000000          NA           NA
+8   9.360326e-02 0.008709635  10.7470926 0.000000e+00
+9   0.000000e+00 0.000000000          NA           NA
+10  1.000000e+00 0.000000000          NA           NA
+11  9.360326e-02 0.008709635  10.7470926 0.000000e+00
+12  0.000000e+00 0.000000000          NA           NA
+13  1.000000e+00 0.000000000          NA           NA
+14  9.360326e-02 0.008709635  10.7470926 0.000000e+00
+15  0.000000e+00 0.000000000          NA           NA
+16  1.000000e+00 0.000000000          NA           NA
+17  9.360326e-02 0.008709635  10.7470926 0.000000e+00
+18  0.000000e+00 0.000000000          NA           NA
+19  3.611451e-01 0.159263147   2.2675999 2.335360e-02
+20  3.507265e-01 0.159263147   2.2021825 2.765242e-02
+21  1.000000e+00 0.000000000          NA           NA
+22 -4.085779e-01 0.184630738  -2.2129460 2.690137e-02
+23 -9.738142e-02 0.184630738  -0.5274388 5.978889e-01
+24  6.391573e+00 0.154525702  41.3625220 0.000000e+00
+25 -4.125384e+00 0.179138708 -23.0289923 0.000000e+00
+26  1.682822e+00 0.295549949   5.6938654 1.241950e-08
+27  2.291782e+00 0.396662742   5.7776591 7.574708e-09
+28  0.000000e+00 0.000000000          NA           NA
+29  9.870130e-01 0.000000000          NA           NA
+30 -2.121974e-01 0.000000000          NA           NA
+31  9.870130e-01 0.000000000          NA           NA
+32 -2.097438e-17 0.000000000          NA           NA
+33 -2.813857e-17 0.000000000          NA           NA
+
+
+--------------------------------------
+
+Model fitting:
+
+               npar                fmin               chisq                  df 
+             10.000               0.410              63.113              29.000 
+             pvalue      baseline.chisq         baseline.df     baseline.pvalue 
+              0.000             782.631              27.000               0.000 
+                cfi                 tli                nnfi                 rfi 
+              0.955               0.958               0.958                  NA 
+                nfi                pnfi                 ifi                 rni 
+                 NA               0.987               0.955               0.955 
+               logl   unrestricted.logl                 aic                 bic 
+           -475.201            -443.644             970.401             993.839 
+             ntotal                bic2               rmsea      rmsea.ci.lower 
+             77.000             962.315               0.124               0.082 
+     rmsea.ci.upper        rmsea.pvalue                 rmr          rmr_nomean 
+              0.165               0.004               1.068               1.181 
+               srmr        srmr_bentler srmr_bentler_nomean                crmr 
+              0.504               0.504               0.557               0.201 
+        crmr_nomean          srmr_mplus   srmr_mplus_nomean               cn_05 
+              0.145               0.344               0.348              52.921 
+              cn_01                 gfi                agfi                pgfi 
+             61.499               0.975               0.962               0.643 
+                mfi                ecvi 
+              0.801               1.079 
