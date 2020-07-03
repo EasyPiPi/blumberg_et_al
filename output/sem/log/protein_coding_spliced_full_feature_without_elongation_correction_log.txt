@@ -2,29 +2,21 @@ Structural equation model:
 
 # Measurement model
 
-latent_trans_ =~ 1 * K562_AB_1_PROseq
-K562_AB_1_PROseq ~~ residual_trans_ * K562_AB_1_PROseq
-K562_AB_1_PROseq ~ 0*1
+latent_trans_ =~ 1 * K562_PROseq_1_PROseq
+K562_PROseq_1_PROseq ~~ residual_trans_ * K562_PROseq_1_PROseq
+K562_PROseq_1_PROseq ~ 0*1
 
-latent_trans_ =~ 1 * K562_AB_2_PROseq
-K562_AB_2_PROseq ~~ residual_trans_ * K562_AB_2_PROseq
-K562_AB_2_PROseq ~ 0*1
+latent_trans_ =~ 1 * K562_PROseq_2_PROseq
+K562_PROseq_2_PROseq ~~ residual_trans_ * K562_PROseq_2_PROseq
+K562_PROseq_2_PROseq ~ 0*1
 
-latent_RNA_ =~ 1 * total_RNA_1_RNAseq_ex
-total_RNA_1_RNAseq_ex ~~ residual_RNA_ * total_RNA_1_RNAseq_ex
-total_RNA_1_RNAseq_ex ~ 0*1
+latent_RNA_ =~ 1 * polyadenylated_mRNA_1_RNAseq_ex
+polyadenylated_mRNA_1_RNAseq_ex ~~ residual_RNA_ * polyadenylated_mRNA_1_RNAseq_ex
+polyadenylated_mRNA_1_RNAseq_ex ~ 0*1
 
-latent_RNA_ =~ 1 * total_RNA_2_RNAseq_ex
-total_RNA_2_RNAseq_ex ~~ residual_RNA_ * total_RNA_2_RNAseq_ex
-total_RNA_2_RNAseq_ex ~ 0*1
-
-latent_RNA_ =~ 1 * total_RNA_3_RNAseq_ex
-total_RNA_3_RNAseq_ex ~~ residual_RNA_ * total_RNA_3_RNAseq_ex
-total_RNA_3_RNAseq_ex ~ 0*1
-
-latent_RNA_ =~ 1 * total_RNA_4_RNAseq_ex
-total_RNA_4_RNAseq_ex ~~ residual_RNA_ * total_RNA_4_RNAseq_ex
-total_RNA_4_RNAseq_ex ~ 0*1
+latent_RNA_ =~ 1 * polyadenylated_mRNA_2_RNAseq_ex
+polyadenylated_mRNA_2_RNAseq_ex ~~ residual_RNA_ * polyadenylated_mRNA_2_RNAseq_ex
+polyadenylated_mRNA_2_RNAseq_ex ~ 0*1
 
 # Regression model
 
@@ -40,20 +32,20 @@ latent_RNA_ ~~ 0 * latent_trans_
 
 Model summary:
 
-lavaan 0.6-5 ended normally after 55 iterations
+lavaan 0.6-5 ended normally after 59 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
-  Number of free parameters                         28
-  Number of equality constraints                     4
-  Row rank of the constraints matrix                 4
+  Number of free parameters                         26
+  Number of equality constraints                     2
+  Row rank of the constraints matrix                 2
                                                       
-  Number of observations                          1939
+  Number of observations                          1429
                                                       
 Model Test User Model:
                                                       
-  Test statistic                               964.155
-  Degrees of freedom                                57
+  Test statistic                               131.418
+  Degrees of freedom                                26
   P-value (Chi-square)                           0.000
 
 Parameter Estimates:
@@ -65,37 +57,35 @@ Parameter Estimates:
 Latent Variables:
                    Estimate  Std.Err  z-value  P(>|z|)
   latent_trans_ =~                                    
-    K562_AB_1_PROs    1.000                           
-    K562_AB_2_PROs    1.000                           
+    K562_PRO_1_PRO    1.000                           
+    K562_PRO_2_PRO    1.000                           
   latent_RNA_ =~                                      
-    ttl_RNA_1_RNA_    1.000                           
-    ttl_RNA_2_RNA_    1.000                           
-    ttl_RNA_3_RNA_    1.000                           
-    ttl_RNA_4_RNA_    1.000                           
+    ply_RNA_1_RNA_    1.000                           
+    ply_RNA_2_RNA_    1.000                           
 
 Regressions:
                    Estimate  Std.Err  z-value  P(>|z|)
   latent_trans_ ~                                     
-    gc_5utr           0.057    0.022    2.558    0.011
-    len_5utr          0.036    0.022    1.624    0.104
-    gc_cds            0.013    0.034    0.399    0.690
-    len_cds           0.106    0.022    4.790    0.000
-    gc_3utr           0.012    0.032    0.378    0.706
-    len_3utr          0.097    0.027    3.564    0.000
-    gc_intron         0.179    0.036    4.934    0.000
-    len_intron       -0.316    0.023  -13.888    0.000
-    exonJunDen        0.118    0.028    4.213    0.000
+    gc_5utr           0.015    0.021    0.729    0.466
+    len_5utr          0.030    0.021    1.417    0.156
+    gc_cds            0.012    0.031    0.400    0.689
+    len_cds           0.074    0.021    3.620    0.000
+    gc_3utr           0.014    0.029    0.478    0.633
+    len_3utr          0.033    0.026    1.258    0.208
+    gc_intron         0.228    0.033    6.957    0.000
+    len_intron       -0.234    0.021  -10.976    0.000
+    exonJunDen        0.064    0.027    2.354    0.019
   latent_RNA_ ~                                       
     latent_trans_     1.000                           
-    gc_5utr          -0.046    0.026   -1.778    0.075
-    len_5utr         -0.081    0.025   -3.180    0.001
-    gc_cds           -0.300    0.039   -7.739    0.000
-    len_cds          -0.357    0.025  -14.029    0.000
-    gc_3utr          -0.082    0.037   -2.219    0.027
-    len_3utr         -0.327    0.031  -10.419    0.000
-    gc_intron        -0.035    0.042   -0.830    0.406
-    len_intron        0.064    0.026    2.421    0.015
-    exonJunDen        0.316    0.032    9.765    0.000
+    gc_5utr           0.045    0.025    1.779    0.075
+    len_5utr         -0.121    0.026   -4.700    0.000
+    gc_cds           -0.011    0.038   -0.285    0.776
+    len_cds          -0.379    0.025  -15.000    0.000
+    gc_3utr          -0.001    0.036   -0.029    0.977
+    len_3utr         -0.311    0.032   -9.715    0.000
+    gc_intron         0.004    0.040    0.100    0.921
+    len_intron        0.041    0.026    1.574    0.115
+    exonJunDen        0.378    0.034   11.255    0.000
 
 Covariances:
                    Estimate  Std.Err  z-value  P(>|z|)
@@ -104,221 +94,205 @@ Covariances:
 
 Intercepts:
                    Estimate  Std.Err  z-value  P(>|z|)
-   .K562_AB_1_PROs    0.000                           
-   .K562_AB_2_PROs    0.000                           
-   .ttl_RNA_1_RNA_    0.000                           
-   .ttl_RNA_2_RNA_    0.000                           
-   .ttl_RNA_3_RNA_    0.000                           
-   .ttl_RNA_4_RNA_    0.000                           
-   .latent_trans_     5.419    0.021  254.153    0.000
-   .latent_RNA_      -0.424    0.025  -17.186    0.000
+   .K562_PRO_1_PRO    0.000                           
+   .K562_PRO_2_PRO    0.000                           
+   .ply_RNA_1_RNA_    0.000                           
+   .ply_RNA_2_RNA_    0.000                           
+   .latent_trans_     6.060    0.020  304.383    0.000
+   .latent_RNA_      -0.915    0.024  -37.427    0.000
 
 Variances:
                    Estimate  Std.Err  z-value  P(>|z|)
-   .K562_AB (rs__)    0.004    0.000   31.137    0.000
-   .K562_AB (rs__)    0.004    0.000   31.137    0.000
-   .t_RNA_1 (r_RN)    0.010    0.000   53.931    0.000
-   .t_RNA_2 (r_RN)    0.010    0.000   53.931    0.000
-   .t_RNA_3 (r_RN)    0.010    0.000   53.931    0.000
-   .t_RNA_4 (r_RN)    0.010    0.000   53.931    0.000
-   .ltnt_t_           0.879    0.028   31.060    0.000
-   .lt_RNA_           1.173    0.038   31.012    0.000
+   .K562_PR (rs__)    0.000    0.000   26.730    0.000
+   .K562_PR (rs__)    0.000    0.000   26.730    0.000
+   .p_RNA_1 (r_RN)    0.021    0.001   26.730    0.000
+   .p_RNA_2 (r_RN)    0.021    0.001   26.730    0.000
+   .ltnt_t_           0.566    0.021   26.726    0.000
+   .lt_RNA_           0.843    0.032   26.397    0.000
 
 $PE
-                     lhs op                   rhs           label exo
-1          latent_trans_ =~      K562_AB_1_PROseq                   0
-2       K562_AB_1_PROseq ~~      K562_AB_1_PROseq residual_trans_   0
-3       K562_AB_1_PROseq ~1                                         0
-4          latent_trans_ =~      K562_AB_2_PROseq                   0
-5       K562_AB_2_PROseq ~~      K562_AB_2_PROseq residual_trans_   0
-6       K562_AB_2_PROseq ~1                                         0
-7            latent_RNA_ =~ total_RNA_1_RNAseq_ex                   0
-8  total_RNA_1_RNAseq_ex ~~ total_RNA_1_RNAseq_ex   residual_RNA_   0
-9  total_RNA_1_RNAseq_ex ~1                                         0
-10           latent_RNA_ =~ total_RNA_2_RNAseq_ex                   0
-11 total_RNA_2_RNAseq_ex ~~ total_RNA_2_RNAseq_ex   residual_RNA_   0
-12 total_RNA_2_RNAseq_ex ~1                                         0
-13           latent_RNA_ =~ total_RNA_3_RNAseq_ex                   0
-14 total_RNA_3_RNAseq_ex ~~ total_RNA_3_RNAseq_ex   residual_RNA_   0
-15 total_RNA_3_RNAseq_ex ~1                                         0
-16           latent_RNA_ =~ total_RNA_4_RNAseq_ex                   0
-17 total_RNA_4_RNAseq_ex ~~ total_RNA_4_RNAseq_ex   residual_RNA_   0
-18 total_RNA_4_RNAseq_ex ~1                                         0
-19         latent_trans_  ~               gc_5utr                   0
-20         latent_trans_  ~              len_5utr                   0
-21         latent_trans_  ~                gc_cds                   0
-22         latent_trans_  ~               len_cds                   0
-23         latent_trans_  ~               gc_3utr                   0
-24         latent_trans_  ~              len_3utr                   0
-25         latent_trans_  ~             gc_intron                   0
-26         latent_trans_  ~            len_intron                   0
-27         latent_trans_  ~            exonJunDen                   0
-28           latent_RNA_  ~         latent_trans_                   0
-29           latent_RNA_  ~               gc_5utr                   0
-30           latent_RNA_  ~              len_5utr                   0
-31           latent_RNA_  ~                gc_cds                   0
-32           latent_RNA_  ~               len_cds                   0
-33           latent_RNA_  ~               gc_3utr                   0
-34           latent_RNA_  ~              len_3utr                   0
-35           latent_RNA_  ~             gc_intron                   0
-36           latent_RNA_  ~            len_intron                   0
-37           latent_RNA_  ~            exonJunDen                   0
-38         latent_trans_ ~1                                         0
-39           latent_RNA_ ~1                                         0
-40         latent_trans_ ~~         latent_trans_                   0
-41           latent_RNA_ ~~           latent_RNA_                   0
-42         latent_trans_ ~~           latent_RNA_                   0
-43               gc_5utr ~~               gc_5utr                   1
-44               gc_5utr ~~              len_5utr                   1
-45               gc_5utr ~~                gc_cds                   1
-46               gc_5utr ~~               len_cds                   1
-47               gc_5utr ~~               gc_3utr                   1
-48               gc_5utr ~~              len_3utr                   1
-49               gc_5utr ~~             gc_intron                   1
-50               gc_5utr ~~            len_intron                   1
-51               gc_5utr ~~            exonJunDen                   1
-52              len_5utr ~~              len_5utr                   1
-53              len_5utr ~~                gc_cds                   1
-54              len_5utr ~~               len_cds                   1
-55              len_5utr ~~               gc_3utr                   1
-56              len_5utr ~~              len_3utr                   1
-57              len_5utr ~~             gc_intron                   1
-58              len_5utr ~~            len_intron                   1
-59              len_5utr ~~            exonJunDen                   1
-60                gc_cds ~~                gc_cds                   1
-61                gc_cds ~~               len_cds                   1
-62                gc_cds ~~               gc_3utr                   1
-63                gc_cds ~~              len_3utr                   1
-64                gc_cds ~~             gc_intron                   1
-65                gc_cds ~~            len_intron                   1
-66                gc_cds ~~            exonJunDen                   1
-67               len_cds ~~               len_cds                   1
-68               len_cds ~~               gc_3utr                   1
-69               len_cds ~~              len_3utr                   1
-70               len_cds ~~             gc_intron                   1
-71               len_cds ~~            len_intron                   1
-72               len_cds ~~            exonJunDen                   1
-73               gc_3utr ~~               gc_3utr                   1
-74               gc_3utr ~~              len_3utr                   1
-75               gc_3utr ~~             gc_intron                   1
-76               gc_3utr ~~            len_intron                   1
-77               gc_3utr ~~            exonJunDen                   1
-78              len_3utr ~~              len_3utr                   1
-79              len_3utr ~~             gc_intron                   1
-80              len_3utr ~~            len_intron                   1
-81              len_3utr ~~            exonJunDen                   1
-82             gc_intron ~~             gc_intron                   1
-83             gc_intron ~~            len_intron                   1
-84             gc_intron ~~            exonJunDen                   1
-85            len_intron ~~            len_intron                   1
-86            len_intron ~~            exonJunDen                   1
-87            exonJunDen ~~            exonJunDen                   1
-88               gc_5utr ~1                                         1
-89              len_5utr ~1                                         1
-90                gc_cds ~1                                         1
-91               len_cds ~1                                         1
-92               gc_3utr ~1                                         1
-93              len_3utr ~1                                         1
-94             gc_intron ~1                                         1
-95            len_intron ~1                                         1
-96            exonJunDen ~1                                         1
-             est           se           z       pvalue
-1   1.000000e+00 0.0000000000          NA           NA
-2   4.358614e-03 0.0001399821  31.1369374 0.000000e+00
-3   0.000000e+00 0.0000000000          NA           NA
-4   1.000000e+00 0.0000000000          NA           NA
-5   4.358614e-03 0.0001399821  31.1369374 0.000000e+00
-6   0.000000e+00 0.0000000000          NA           NA
-7   1.000000e+00 0.0000000000          NA           NA
-8   1.020764e-02 0.0001892739  53.9305108 0.000000e+00
-9   0.000000e+00 0.0000000000          NA           NA
-10  1.000000e+00 0.0000000000          NA           NA
-11  1.020764e-02 0.0001892739  53.9305108 0.000000e+00
-12  0.000000e+00 0.0000000000          NA           NA
-13  1.000000e+00 0.0000000000          NA           NA
-14  1.020764e-02 0.0001892739  53.9305108 0.000000e+00
-15  0.000000e+00 0.0000000000          NA           NA
-16  1.000000e+00 0.0000000000          NA           NA
-17  1.020764e-02 0.0001892739  53.9305108 0.000000e+00
-18  0.000000e+00 0.0000000000          NA           NA
-19  5.747711e-02 0.0224660545   2.5583979 1.051557e-02
-20  3.574554e-02 0.0220105127   1.6240211 1.043713e-01
-21  1.339659e-02 0.0335923712   0.3987987 6.900415e-01
-22  1.055713e-01 0.0220406834   4.7898365 1.669172e-06
-23  1.210350e-02 0.0320399655   0.3777626 7.056069e-01
-24  9.683105e-02 0.0271679142   3.5641695 3.650100e-04
-25  1.790826e-01 0.0362977730   4.9337070 8.068343e-07
-26 -3.155441e-01 0.0227207834 -13.8879054 0.000000e+00
-27  1.179283e-01 0.0279902637   4.2131883 2.517910e-05
-28  1.000000e+00 0.0000000000          NA           NA
-29 -4.617750e-02 0.0259684777  -1.7782136 7.536878e-02
-30 -8.090544e-02 0.0254419176  -3.1800057 1.472722e-03
-31 -3.004961e-01 0.0388293699  -7.7388865 9.992007e-15
-32 -3.574188e-01 0.0254767919 -14.0291922 0.000000e+00
-33 -8.216512e-02 0.0370349465  -2.2185835 2.651507e-02
-34 -3.271933e-01 0.0314033500 -10.4190579 0.000000e+00
-35 -3.484378e-02 0.0419565396  -0.8304731 4.062714e-01
-36  6.358487e-02 0.0262629184   2.4210894 1.547407e-02
-37  3.159226e-01 0.0323539025   9.7645903 0.000000e+00
-38  5.419075e+00 0.0213220695 254.1533091 0.000000e+00
-39 -4.235732e-01 0.0246461471 -17.1861845 0.000000e+00
-40  8.793495e-01 0.0283114388  31.0598667 0.000000e+00
-41  1.173081e+00 0.0378269273  31.0117849 0.000000e+00
-42  0.000000e+00 0.0000000000          NA           NA
-43  9.994843e-01 0.0000000000          NA           NA
-44 -1.631757e-01 0.0000000000          NA           NA
-45  2.410878e-01 0.0000000000          NA           NA
-46  2.593526e-02 0.0000000000          NA           NA
-47  1.448739e-01 0.0000000000          NA           NA
-48  8.902714e-02 0.0000000000          NA           NA
-49  1.899646e-01 0.0000000000          NA           NA
-50 -9.322743e-03 0.0000000000          NA           NA
-51 -8.676458e-02 0.0000000000          NA           NA
-52  9.994843e-01 0.0000000000          NA           NA
-53  1.151534e-02 0.0000000000          NA           NA
-54  1.380027e-02 0.0000000000          NA           NA
-55 -2.917192e-02 0.0000000000          NA           NA
-56  1.246292e-02 0.0000000000          NA           NA
-57 -2.735481e-02 0.0000000000          NA           NA
-58  1.125091e-01 0.0000000000          NA           NA
-59 -1.021769e-01 0.0000000000          NA           NA
-60  9.994843e-01 0.0000000000          NA           NA
-61 -7.511727e-03 0.0000000000          NA           NA
-62  6.471251e-01 0.0000000000          NA           NA
-63  3.945534e-03 0.0000000000          NA           NA
-64  7.190260e-01 0.0000000000          NA           NA
-65  2.791568e-02 0.0000000000          NA           NA
-66 -1.172538e-01 0.0000000000          NA           NA
-67  9.994843e-01 0.0000000000          NA           NA
-68 -4.058469e-02 0.0000000000          NA           NA
-69 -6.323668e-02 0.0000000000          NA           NA
-70 -1.983065e-02 0.0000000000          NA           NA
-71  1.816536e-01 0.0000000000          NA           NA
-72  1.666851e-01 0.0000000000          NA           NA
-73  9.994843e-01 0.0000000000          NA           NA
-74  1.725197e-02 0.0000000000          NA           NA
-75  7.085332e-01 0.0000000000          NA           NA
-76  6.905495e-04 0.0000000000          NA           NA
-77 -5.489900e-04 0.0000000000          NA           NA
-78  9.994843e-01 0.0000000000          NA           NA
-79 -8.741916e-02 0.0000000000          NA           NA
-80  6.898173e-03 0.0000000000          NA           NA
-81 -5.982580e-01 0.0000000000          NA           NA
-82  9.994843e-01 0.0000000000          NA           NA
-83 -1.401411e-01 0.0000000000          NA           NA
-84  2.414575e-02 0.0000000000          NA           NA
-85  9.994843e-01 0.0000000000          NA           NA
-86  8.285022e-02 0.0000000000          NA           NA
-87  9.994843e-01 0.0000000000          NA           NA
-88  1.238516e-16 0.0000000000          NA           NA
-89  8.413275e-18 0.0000000000          NA           NA
-90 -2.235870e-16 0.0000000000          NA           NA
-91 -1.145486e-16 0.0000000000          NA           NA
-92  7.427730e-17 0.0000000000          NA           NA
-93 -7.859979e-17 0.0000000000          NA           NA
-94 -1.390454e-16 0.0000000000          NA           NA
-95  4.634883e-17 0.0000000000          NA           NA
-96 -3.136101e-17 0.0000000000          NA           NA
+                               lhs op                             rhs
+1                    latent_trans_ =~            K562_PROseq_1_PROseq
+2             K562_PROseq_1_PROseq ~~            K562_PROseq_1_PROseq
+3             K562_PROseq_1_PROseq ~1                                
+4                    latent_trans_ =~            K562_PROseq_2_PROseq
+5             K562_PROseq_2_PROseq ~~            K562_PROseq_2_PROseq
+6             K562_PROseq_2_PROseq ~1                                
+7                      latent_RNA_ =~ polyadenylated_mRNA_1_RNAseq_ex
+8  polyadenylated_mRNA_1_RNAseq_ex ~~ polyadenylated_mRNA_1_RNAseq_ex
+9  polyadenylated_mRNA_1_RNAseq_ex ~1                                
+10                     latent_RNA_ =~ polyadenylated_mRNA_2_RNAseq_ex
+11 polyadenylated_mRNA_2_RNAseq_ex ~~ polyadenylated_mRNA_2_RNAseq_ex
+12 polyadenylated_mRNA_2_RNAseq_ex ~1                                
+13                   latent_trans_  ~                         gc_5utr
+14                   latent_trans_  ~                        len_5utr
+15                   latent_trans_  ~                          gc_cds
+16                   latent_trans_  ~                         len_cds
+17                   latent_trans_  ~                         gc_3utr
+18                   latent_trans_  ~                        len_3utr
+19                   latent_trans_  ~                       gc_intron
+20                   latent_trans_  ~                      len_intron
+21                   latent_trans_  ~                      exonJunDen
+22                     latent_RNA_  ~                   latent_trans_
+23                     latent_RNA_  ~                         gc_5utr
+24                     latent_RNA_  ~                        len_5utr
+25                     latent_RNA_  ~                          gc_cds
+26                     latent_RNA_  ~                         len_cds
+27                     latent_RNA_  ~                         gc_3utr
+28                     latent_RNA_  ~                        len_3utr
+29                     latent_RNA_  ~                       gc_intron
+30                     latent_RNA_  ~                      len_intron
+31                     latent_RNA_  ~                      exonJunDen
+32                   latent_trans_ ~1                                
+33                     latent_RNA_ ~1                                
+34                   latent_trans_ ~~                   latent_trans_
+35                     latent_RNA_ ~~                     latent_RNA_
+36                   latent_trans_ ~~                     latent_RNA_
+37                         gc_5utr ~~                         gc_5utr
+38                         gc_5utr ~~                        len_5utr
+39                         gc_5utr ~~                          gc_cds
+40                         gc_5utr ~~                         len_cds
+41                         gc_5utr ~~                         gc_3utr
+42                         gc_5utr ~~                        len_3utr
+43                         gc_5utr ~~                       gc_intron
+44                         gc_5utr ~~                      len_intron
+45                         gc_5utr ~~                      exonJunDen
+46                        len_5utr ~~                        len_5utr
+47                        len_5utr ~~                          gc_cds
+48                        len_5utr ~~                         len_cds
+49                        len_5utr ~~                         gc_3utr
+50                        len_5utr ~~                        len_3utr
+51                        len_5utr ~~                       gc_intron
+52                        len_5utr ~~                      len_intron
+53                        len_5utr ~~                      exonJunDen
+54                          gc_cds ~~                          gc_cds
+55                          gc_cds ~~                         len_cds
+56                          gc_cds ~~                         gc_3utr
+57                          gc_cds ~~                        len_3utr
+58                          gc_cds ~~                       gc_intron
+59                          gc_cds ~~                      len_intron
+60                          gc_cds ~~                      exonJunDen
+61                         len_cds ~~                         len_cds
+62                         len_cds ~~                         gc_3utr
+63                         len_cds ~~                        len_3utr
+64                         len_cds ~~                       gc_intron
+65                         len_cds ~~                      len_intron
+66                         len_cds ~~                      exonJunDen
+67                         gc_3utr ~~                         gc_3utr
+68                         gc_3utr ~~                        len_3utr
+69                         gc_3utr ~~                       gc_intron
+70                         gc_3utr ~~                      len_intron
+71                         gc_3utr ~~                      exonJunDen
+72                        len_3utr ~~                        len_3utr
+73                        len_3utr ~~                       gc_intron
+74                        len_3utr ~~                      len_intron
+75                        len_3utr ~~                      exonJunDen
+76                       gc_intron ~~                       gc_intron
+77                       gc_intron ~~                      len_intron
+78                       gc_intron ~~                      exonJunDen
+79                      len_intron ~~                      len_intron
+80                      len_intron ~~                      exonJunDen
+81                      exonJunDen ~~                      exonJunDen
+82                         gc_5utr ~1                                
+83                        len_5utr ~1                                
+84                          gc_cds ~1                                
+85                         len_cds ~1                                
+86                         gc_3utr ~1                                
+87                        len_3utr ~1                                
+88                       gc_intron ~1                                
+89                      len_intron ~1                                
+90                      exonJunDen ~1                                
+             label exo           est           se            z       pvalue
+1                    0  1.000000e+00 0.000000e+00           NA           NA
+2  residual_trans_   0  1.875164e-04 7.015170e-06  26.73013330 0.000000e+00
+3                    0  0.000000e+00 0.000000e+00           NA           NA
+4                    0  1.000000e+00 0.000000e+00           NA           NA
+5  residual_trans_   0  1.875164e-04 7.015170e-06  26.73013330 0.000000e+00
+6                    0  0.000000e+00 0.000000e+00           NA           NA
+7                    0  1.000000e+00 0.000000e+00           NA           NA
+8    residual_RNA_   0  2.100119e-02 7.856747e-04  26.73013281 0.000000e+00
+9                    0  0.000000e+00 0.000000e+00           NA           NA
+10                   0  1.000000e+00 0.000000e+00           NA           NA
+11   residual_RNA_   0  2.100119e-02 7.856747e-04  26.73013281 0.000000e+00
+12                   0  0.000000e+00 0.000000e+00           NA           NA
+13                   0  1.497432e-02 2.055394e-02   0.72853793 4.662844e-01
+14                   0  2.982881e-02 2.105082e-02   1.41699012 1.564858e-01
+15                   0  1.240607e-02 3.100101e-02   0.40018280 6.890219e-01
+16                   0  7.449714e-02 2.057922e-02   3.62001747 2.945831e-04
+17                   0  1.392311e-02 2.913843e-02   0.47782625 6.327739e-01
+18                   0  3.279725e-02 2.607687e-02   1.25771388 2.084953e-01
+19                   0  2.281930e-01 3.280019e-02   6.95706138 3.474332e-12
+20                   0 -2.344255e-01 2.135735e-02 -10.97633701 0.000000e+00
+21                   0  6.447462e-02 2.738775e-02   2.35414073 1.856558e-02
+22                   0  1.000000e+00 0.000000e+00           NA           NA
+23                   0  4.490249e-02 2.523807e-02   1.77915709 7.521401e-02
+24                   0 -1.214954e-01 2.584819e-02  -4.70034526 2.597220e-06
+25                   0 -1.085148e-02 3.806597e-02  -0.28507040 7.755902e-01
+26                   0 -3.790483e-01 2.526911e-02 -15.00045956 0.000000e+00
+27                   0 -1.045389e-03 3.577892e-02  -0.02921800 9.766907e-01
+28                   0 -3.110730e-01 3.201965e-02  -9.71506453 0.000000e+00
+29                   0  4.019338e-03 4.027518e-02   0.09979689 9.205056e-01
+30                   0  4.128069e-02 2.622457e-02   1.57412234 1.154592e-01
+31                   0  3.784998e-01 3.362927e-02  11.25506955 0.000000e+00
+32                   0  6.060265e+00 1.991000e-02 304.38291296 0.000000e+00
+33                   0 -9.149963e-01 2.444739e-02 -37.42716117 0.000000e+00
+34                   0  5.663737e-01 2.119209e-02  26.72570872 0.000000e+00
+35                   0  8.434828e-01 3.195426e-02  26.39656571 0.000000e+00
+36                   0  0.000000e+00 0.000000e+00           NA           NA
+37                   1  9.993002e-01 0.000000e+00           NA           NA
+38                   1 -9.081767e-02 0.000000e+00           NA           NA
+39                   1  2.142508e-01 0.000000e+00           NA           NA
+40                   1  2.277584e-02 0.000000e+00           NA           NA
+41                   1  1.439261e-01 0.000000e+00           NA           NA
+42                   1  6.740558e-02 0.000000e+00           NA           NA
+43                   1  1.830493e-01 0.000000e+00           NA           NA
+44                   1  7.875231e-03 0.000000e+00           NA           NA
+45                   1 -5.330626e-02 0.000000e+00           NA           NA
+46                   1  9.993002e-01 0.000000e+00           NA           NA
+47                   1 -2.474105e-02 0.000000e+00           NA           NA
+48                   1  6.064684e-02 0.000000e+00           NA           NA
+49                   1 -4.992876e-02 0.000000e+00           NA           NA
+50                   1  1.070419e-01 0.000000e+00           NA           NA
+51                   1 -5.554506e-02 0.000000e+00           NA           NA
+52                   1  1.347087e-01 0.000000e+00           NA           NA
+53                   1 -2.431426e-01 0.000000e+00           NA           NA
+54                   1  9.993002e-01 0.000000e+00           NA           NA
+55                   1 -2.308534e-02 0.000000e+00           NA           NA
+56                   1  6.382889e-01 0.000000e+00           NA           NA
+57                   1  7.113270e-02 0.000000e+00           NA           NA
+58                   1  7.143013e-01 0.000000e+00           NA           NA
+59                   1 -2.199377e-03 0.000000e+00           NA           NA
+60                   1 -1.770266e-01 0.000000e+00           NA           NA
+61                   1  9.993002e-01 0.000000e+00           NA           NA
+62                   1 -4.725584e-03 0.000000e+00           NA           NA
+63                   1  2.044556e-02 0.000000e+00           NA           NA
+64                   1 -1.881145e-02 0.000000e+00           NA           NA
+65                   1  2.134353e-01 0.000000e+00           NA           NA
+66                   1  9.442259e-02 0.000000e+00           NA           NA
+67                   1  9.993002e-01 0.000000e+00           NA           NA
+68                   1  5.174399e-02 0.000000e+00           NA           NA
+69                   1  6.905634e-01 0.000000e+00           NA           NA
+70                   1 -3.185951e-03 0.000000e+00           NA           NA
+71                   1 -3.286694e-02 0.000000e+00           NA           NA
+72                   1  9.993002e-01 0.000000e+00           NA           NA
+73                   1 -2.754141e-02 0.000000e+00           NA           NA
+74                   1  7.994239e-02 0.000000e+00           NA           NA
+75                   1 -6.200306e-01 0.000000e+00           NA           NA
+76                   1  9.993002e-01 0.000000e+00           NA           NA
+77                   1 -1.446411e-01 0.000000e+00           NA           NA
+78                   1 -3.966698e-02 0.000000e+00           NA           NA
+79                   1  9.993002e-01 0.000000e+00           NA           NA
+80                   1  5.413203e-02 0.000000e+00           NA           NA
+81                   1  9.993002e-01 0.000000e+00           NA           NA
+82                   1  2.281714e-16 0.000000e+00           NA           NA
+83                   1  2.027587e-17 0.000000e+00           NA           NA
+84                   1 -4.266473e-16 0.000000e+00           NA           NA
+85                   1 -4.647699e-17 0.000000e+00           NA           NA
+86                   1 -9.507838e-17 0.000000e+00           NA           NA
+87                   1 -1.846892e-17 0.000000e+00           NA           NA
+88                   1  4.732493e-16 0.000000e+00           NA           NA
+89                   1 -7.275702e-17 0.000000e+00           NA           NA
+90                   1 -1.222925e-17 0.000000e+00           NA           NA
 
 
 --------------------------------------
@@ -326,24 +300,24 @@ $PE
 Model fitting:
 
                npar                fmin               chisq                  df 
-             24.000               0.249             964.155              57.000 
+             24.000               0.046             131.418              26.000 
              pvalue      baseline.chisq         baseline.df     baseline.pvalue 
-              0.000           40934.723              69.000               0.000 
+              0.000           18069.593              42.000               0.000 
                 cfi                 tli                nnfi                 rfi 
-              0.978               0.973               0.973               0.971 
+              0.994               0.991               0.991               0.988 
                 nfi                pnfi                 ifi                 rni 
-              0.976               0.807               0.978               0.978 
+              0.993               0.615               0.994               0.994 
                logl   unrestricted.logl                 aic                 bic 
-             43.817             525.895             -39.635              94.044 
+            309.441             375.150            -570.881            -444.528 
              ntotal                bic2               rmsea      rmsea.ci.lower 
-           1939.000              17.795               0.091               0.086 
+           1429.000            -520.768               0.053               0.044 
      rmsea.ci.upper        rmsea.pvalue                 rmr          rmr_nomean 
-              0.096               0.000               0.078               0.083 
+              0.062               0.262               0.005               0.005 
                srmr        srmr_bentler srmr_bentler_nomean                crmr 
-              0.036               0.036               0.039               0.034 
+              0.003               0.003               0.003               0.005 
         crmr_nomean          srmr_mplus   srmr_mplus_nomean               cn_05 
-              0.016               0.037               0.025             153.086 
+              0.003               0.005               0.003             423.826 
               cn_01                 gfi                agfi                pgfi 
-            171.405               0.986               0.967               0.416 
+            497.295               0.999               0.995               0.250 
                 mfi                ecvi 
-              0.791               0.522 
+              0.964               0.126 

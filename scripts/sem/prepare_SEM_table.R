@@ -9,7 +9,8 @@ histone_dir <- file.path(root_dir, "data/histone")
 sem_data_dir <- file.path(root_dir, "output/sem/data")
 dir.create(sem_data_dir, showWarnings = FALSE, recursive = TRUE)
 
-exp_df <- read_csv(file.path(exp_dir, "expression_K562_Amit_total_RNA_log2TPM_1_replicates.csv"))
+# exp_df <- read_csv(file.path(exp_dir, "expression_K562_Amit_total_RNA_log2TPM_1_replicates.csv"))
+exp_df <- read_csv(file.path(exp_dir, "expression_K562_2014NG_polyA_RNA_log2TPM_1_replicates.csv"))
 feature_df <- read_csv(file.path(tx_features_dir, "human_gene_features.csv"))
 
 gene_biotype_df <- read_csv(file.path(id_dir, "genetype.csv"))
@@ -56,11 +57,11 @@ exp_feature_df %>% filter(biotype == "lincRNA", spliced == "non-spliced") %>%
     write_csv(file.path(sem_data_dir, "lincRNA_nonspliced.csv"))
 
 # try not using replicates
-exp_feature_df %>% filter(biotype == "protein_coding", spliced == "spliced") %>%
-    select(c(exp_cols, pc_cols)) %>% na.omit() %>% mutate_at(pc_cols, scale) %>%
-    select(-c("K562_AB_2_PROseq", "total_RNA_2_RNAseq_ex",
-              "total_RNA_3_RNAseq_ex", "total_RNA_4_RNAseq_ex")) %>%
-    write_csv(file.path(sem_data_dir, "protein_coding_spliced_full_feature_no_replicates.csv"))
+# exp_feature_df %>% filter(biotype == "protein_coding", spliced == "spliced") %>%
+#     select(c(exp_cols, pc_cols)) %>% na.omit() %>% mutate_at(pc_cols, scale) %>%
+#     select(-c("K562_AB_2_PROseq", "total_RNA_2_RNAseq_ex",
+#               "total_RNA_3_RNAseq_ex", "total_RNA_4_RNAseq_ex")) %>%
+#     write_csv(file.path(sem_data_dir, "protein_coding_spliced_full_feature_no_replicates.csv"))
 
 # keep a same set of genes which can be analyzed MLR with published studies
 mlr_gene_set <-

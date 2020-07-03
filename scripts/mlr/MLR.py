@@ -27,6 +27,7 @@ import itertools
 
 root_dir = expanduser('~/Desktop/github_repo/blumberg_et_al')
 output = os.path.join(root_dir, 'output/mlr')
+os.makedirs(output, exist_ok=True)
 
 # for gene features, gc percentage is decimal, and length is bp.
 gene_feature = pd.read_csv(os.path.join(root_dir, "data/features/human_gene_features.csv"), index_col=0)
@@ -41,7 +42,10 @@ half_life = half_life.loc[:, ['Schofield_et_al_K562', 'Mele_et_al_K562', 'Wachut
 half_life.columns = ['Schofield_et_al', 'Mele_et_al', 'Wachutka_et_al']
 
 # read blumgberg_et_al
-amit_hl = pd.read_csv(os.path.join(root_dir, "output/half_life/table/half_life_K562_Amit_total_RNA.csv"), index_col="ensembl_gene_id")
+# amit_hl = pd.read_csv(os.path.join(root_dir, "output/half_life/table/half_life_K562_Amit_total_RNA.csv"), index_col="ensembl_gene_id")
+
+# Use ENCODE half-life
+amit_hl = pd.read_csv(os.path.join(root_dir, "output/half_life/table/half_life_K562_2014NG_polyA_RNA.csv"), index_col="ensembl_gene_id")
 amit_hl = amit_hl[["half_life", "biotype"]]
 amit_hl.columns = ["Blumberg_et_al", "biotype"]
 
@@ -122,7 +126,7 @@ spliced_MLR.index.name = 'covariate'
 spliced_MLR.to_csv(os.path.join(output, "MLR_summary_spliced_protein_coding_genes.csv"))
 
 # include SEM results for blumberg et al.
-sem_coef = pd.read_csv(os.path.join(root_dir, "output/sem/output/protein_coding_spliced_full_feature_for_same_set_gene_in_MLR_out.csv"))
+sem_coef = pd.read_csv(os.path.join(root_dir, "output/sem/out/protein_coding_spliced_full_feature_for_same_set_gene_in_MLR_out.csv"))
 sem_coef = sem_coef.loc[sem_coef.response == "Half_life" , ["covariate", "est", "ci.lower", "ci.upper"]]
 sem_coef.index = sem_coef.covariate
 

@@ -4,8 +4,12 @@ library(skimr)
 
 root_dir <- "~/Desktop/github_repo/blumberg_et_al"
 
-proseq_exp_dir <- file.path(root_dir, "data/htseq/K562_PROseq_Amit")
-rnaseq_exp_dir <- file.path(root_dir, "data/htseq/K562_RNAseq_Amit")
+# proseq_exp_dir <- file.path(root_dir, "data/htseq/K562_PROseq_Amit")
+# rnaseq_exp_dir <- file.path(root_dir, "data/htseq/K562_RNAseq_Amit")
+
+proseq_exp_dir <- file.path(root_dir, "data/htseq/NatGen2014")
+rnaseq_exp_dir <- file.path(root_dir, "data/htseq/K562_RNAseq_ENCODE")
+
 id_dir <- file.path(root_dir, "data/id_mapper")
 length_dir <- file.path(root_dir, "data/length")
 exp_fig_dir <- file.path(root_dir, "output/expression/figure")
@@ -21,8 +25,11 @@ genetype <- read_csv(file.path(id_dir, "genetype.csv"))
 proseq_exp_df_names <- list.files(proseq_exp_dir)
 rnaseq_exp_df_names <- list.files(rnaseq_exp_dir)
 
-proseq_exp_df_names <- str_subset(proseq_exp_df_names, "human_longest")
-rnaseq_exp_df_names <- str_subset(rnaseq_exp_df_names, "human_longest")
+# proseq_exp_df_names <- str_subset(proseq_exp_df_names, "human_longest")
+# rnaseq_exp_df_names <- str_subset(rnaseq_exp_df_names, "human_longest")
+
+proseq_exp_df_names <- str_subset(proseq_exp_df_names, "pc_linc_as")
+rnaseq_exp_df_names <- str_subset(rnaseq_exp_df_names, "pc_linc_as")
 
 exp_df_names <- c(proseq_exp_df_names, rnaseq_exp_df_names)
 
@@ -88,8 +95,10 @@ names(log2TPM) <- TPM_dfs %>%
     select(file_name) %>% unique() %>% pull()
 
 # output expression df for SEM
+# log2TPM[[1]] %>% inner_join(log2TPM[[2]], by = "ensembl_transcript_id") %>%
+#     write_csv(file.path(exp_df_dir, "expression_K562_Amit_total_RNA_log2TPM_1_replicates.csv"))
 log2TPM[[1]] %>% inner_join(log2TPM[[2]], by = "ensembl_transcript_id") %>%
-    write_csv(file.path(exp_df_dir, "expression_K562_Amit_total_RNA_log2TPM_1_replicates.csv"))
+    write_csv(file.path(exp_df_dir, "expression_K562_2014NG_polyA_RNA_log2TPM_1_replicates.csv"))
 
 # filter > 0 TPM
 log2TPM <- TPM_dfs %>%
@@ -100,8 +109,11 @@ names(log2TPM) <- TPM_dfs %>%
     select(file_name) %>% unique() %>% pull()
 
 # output expression df for SEM
+# log2TPM[[1]] %>% inner_join(log2TPM[[2]], by = "ensembl_transcript_id") %>%
+#     write_csv(file.path(exp_df_dir, "expression_K562_Amit_total_RNA_log2TPM_0_replicates.csv"))
+
 log2TPM[[1]] %>% inner_join(log2TPM[[2]], by = "ensembl_transcript_id") %>%
-    write_csv(file.path(exp_df_dir, "expression_K562_Amit_total_RNA_log2TPM_0_replicates.csv"))
+    write_csv(file.path(exp_df_dir, "expression_K562_2014NG_polyA_RNA_log2TPM_0_replicates.csv"))
 
 # compute expression correlation for replicates
 compute_corr <- function(df) {

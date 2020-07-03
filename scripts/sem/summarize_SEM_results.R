@@ -2,7 +2,7 @@ library(tidyverse)
 
 root_dir <- "~/Desktop/github_repo/blumberg_et_al"
 
-sem_output_dir <- file.path(root_dir, "output/sem/output")
+sem_output_dir <- file.path(root_dir, "output/sem/out")
 dir.create(sem_output_dir, showWarnings = FALSE, recursive = TRUE)
 sem_fig_dir <- file.path(root_dir, "output/sem/figure")
 dir.create(sem_fig_dir, showWarnings = FALSE, recursive = FALSE)
@@ -62,10 +62,10 @@ walk2(str_c(names(plots), ".png"),
       plots,
       ggsave, path = sem_fig_dir, width = 6, height = 6)
 
-p <- create_lineplot(
-    create_plot_df(sem_dfs$protein_coding_spliced_full_feature_no_replicates),
-    error = FALSE)
-
-ggsave(
-    filename = "protein_coding_spliced_full_feature_no_replicates.png",
-    plot = p, path = sem_fig_dir, width = 6, height = 6)
+# p <- create_lineplot(
+#     create_plot_df(sem_dfs$protein_coding_spliced_full_feature_no_replicates),
+#     error = FALSE)
+#
+# ggsave(
+#     filename = "protein_coding_spliced_full_feature_no_replicates.png",
+#     plot = p, path = sem_fig_dir, width = 6, height = 6)

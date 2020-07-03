@@ -36,7 +36,8 @@ all_gene_hl = pd.read_csv(os.path.join(root_dir, "output/half_life/table/half_li
 genetype = pd.read_csv(os.path.join(root_dir, "data/id_mapper/genetype.csv"), index_col = 0)
 protein_coding = genetype[(genetype == "protein_coding").values].index
 
-all_gene_hl = all_gene_hl[['K562_Amit_PR']].dropna() 
+# all_gene_hl = all_gene_hl[['K562_Amit_PR']].dropna() 
+all_gene_hl = all_gene_hl[['K562_2014NG_PR']].dropna() 
 all_gene_hl = all_gene_hl[all_gene_hl.index.isin(protein_coding)]
 
 #################################################################

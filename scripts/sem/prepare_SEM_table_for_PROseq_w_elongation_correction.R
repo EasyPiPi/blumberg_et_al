@@ -9,7 +9,9 @@ histone_dir <- file.path(root_dir, "data/histone")
 sem_data_dir <- file.path(root_dir, "output/sem/data")
 dir.create(sem_data_dir, showWarnings = FALSE, recursive = TRUE)
 
-exp_df <- read_csv(file.path(exp_dir, "expression_K562_Amit_total_RNA_log2TPM_1_replicates.csv"))
+#exp_df <- read_csv(file.path(exp_dir, "expression_K562_Amit_total_RNA_log2TPM_1_replicates.csv"))
+exp_df <- read_csv(file.path(exp_dir, "expression_K562_2014NG_polyA_RNA_log2TPM_1_replicates.csv"))
+
 feature_df <- read_csv(file.path(tx_features_dir, "human_gene_features.csv"))
 
 gene_biotype_df <- read_csv(file.path(id_dir, "genetype.csv"))

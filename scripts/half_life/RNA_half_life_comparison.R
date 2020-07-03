@@ -65,13 +65,14 @@ hl_K562_corr <-
     cor_spearman(hl_df %>%
                      filter(biotype == "protein_coding") %>%
                      select(contains("K562")) %>%
-                     select(-contains("_IE"), -contains("2014NG")) %>% na.omit())
+                     # select(-contains("_IE"), -contains("2014NG")) %>% na.omit())
+                     select(-contains("_IE"), -contains("Amit")) %>% na.omit())
 
 nice_names <-
     c(
-        #"ENCODE polyA RNA-seq \n   + Core et al PRO-seq",
+        "ENCODE polyA RNA-seq \n   + Core et al PRO-seq",
         #"ENCODE total RNA-seq \n   + Core et al PRO-seq",
-        "Blumberg et al (PRO-seq + RNA-seq)",
+        # "Blumberg et al (PRO-seq + RNA-seq)",
         # "ENCODE polyA RNA-seq \n   exon + intron",
         # "ENCODE total RNA-seq \n   exon + intron",
         # "total RNA-seq \n   exon + intron (this paper)",
@@ -150,8 +151,11 @@ save_fig(
 # }
 
 # Comparison for Amit's data
-amit_PR <- c("K562_Amit_PR", "Schofield_et_al_K562")
-amit_IE <- c("K562_Amit_IE", "Schofield_et_al_K562")
+# amit_PR <- c("K562_Amit_PR", "Schofield_et_al_K562")
+# amit_IE <- c("K562_Amit_IE", "Schofield_et_al_K562")
+
+NG_PR <- c("K562_2014NG_PR", "Schofield_et_al_K562")
+NG_IE <- c("K562_2014NG_IE", "Schofield_et_al_K562")
 
 scatter_contour_plot <- function(amit_cols, xlab, label, c1 = -6, c2 = 4, halflife_df = hl_df) {
     halflife_df <- halflife_df %>%
@@ -179,13 +183,23 @@ scatter_contour_plot <- function(amit_cols, xlab, label, c1 = -6, c2 = 4, halfli
         theme(plot.title = element_text(hjust = 0.5))
 }
 
-ggsave(file.path(hl_figure_dir,
-                 "K562_Amit_total_vs_Schofield_et_al_K562_PR_paper_figure.png"
-    ), plot = scatter_contour_plot(tidyselect::all_of(amit_PR), "PR", "ρ = 0.59\nn=5068 "), width = 6, height = 5)
+# ggsave(file.path(hl_figure_dir,
+#                  "K562_Amit_total_vs_Schofield_et_al_K562_PR_paper_figure.png"
+#     ), plot = scatter_contour_plot(tidyselect::all_of(amit_PR), "PR", "ρ = 0.59\nn=5068 "), width = 6, height = 5)
+#
+# ggsave(file.path(hl_figure_dir,
+#                  "K562_Amit_total_vs_Schofield_et_al_K562_IE_paper_figure.png"
+# ), plot = scatter_contour_plot(tidyselect::all_of(amit_IE), "IE", "ρ = 0.22\nn=3090", c1 = -4, c2 = 6), width = 5, height = 5)
 
-ggsave(file.path(hl_figure_dir,
-                 "K562_Amit_total_vs_Schofield_et_al_K562_IE_paper_figure.png"
-), plot = scatter_contour_plot(tidyselect::all_of(amit_IE), "IE", "ρ = 0.22\nn=3090", c1 = -4, c2 = 6), width = 5, height = 5)
+ggsave(
+    file.path(hl_figure_dir, "K562_2014NG_vs_Schofield_et_al_K562_PR_paper_figure.png"),
+    plot = scatter_contour_plot(tidyselect::all_of(NG_PR), "PR", "ρ = 0.71\nn=4351"),
+    width = 6, height = 5)
+
+ggsave(
+    file.path(hl_figure_dir, "K562_2014NG_vs_Schofield_et_al_K562_IE_paper_figure.png"),
+    plot = scatter_contour_plot(tidyselect::all_of(NG_IE), "IE", "ρ = 0.47\nn=3629",
+                                c1 = -4, c2 = 6), width = 5, height = 5)
 
 # Considering Elongation rate
 elg_rate <- read_csv(file.path(elg_dir, "K562_elongation_rate.csv"))
@@ -199,32 +213,60 @@ elg_rate_alex <- elg_rate_alex %>%
     select(ensembl_gene_id, everything(), -ensembl_transcript_id)
 
 hl_elg_df <- hl_df %>%
-    select(c("ensembl_gene_id", tidyselect::all_of(amit_PR))) %>%
+    # select(c("ensembl_gene_id", tidyselect::all_of(amit_PR))) %>%
+    select(c("ensembl_gene_id", tidyselect::all_of(NG_PR))) %>%
     left_join(elg_rate, by = "ensembl_gene_id") %>%
     left_join(elg_rate_alex, by = "ensembl_gene_id") %>%
-    mutate(K562_Amit_total_PR_elg = K562_Amit_PR * 1000 / elongation_rate,
-           K562_Amit_total_PR_60to120min = K562_Amit_PR * 1000 / Rate_60to120min) %>%
+    # mutate(K562_Amit_total_PR_elg = K562_Amit_PR * 1000 / elongation_rate,
+    #        K562_Amit_total_PR_60to120min = K562_Amit_PR * 1000 / Rate_60to120min)
+    mutate(K562_2014NG_PR_elg = K562_2014NG_PR * 1000 / elongation_rate,
+       K562_2014NG_PR_60to120min = K562_2014NG_PR * 1000 / Rate_60to120min) %>%
     select(-expression, -contains("rate"))
 
-amit_PR <- c("K562_Amit_PR", "Schofield_et_al_K562")
-amit_PR_elg <- c("K562_Amit_total_PR_elg", "Schofield_et_al_K562")
-amit_PR_elg_60to120min <- c("K562_Amit_total_PR_60to120min", "Schofield_et_al_K562")
+# amit_PR <- c("K562_Amit_PR", "Schofield_et_al_K562")
+# amit_PR_elg <- c("K562_Amit_total_PR_elg", "Schofield_et_al_K562")
+# amit_PR_elg_60to120min <- c("K562_Amit_total_PR_60to120min", "Schofield_et_al_K562")
+
+NG_PR <- c("K562_2014NG_PR", "Schofield_et_al_K562")
+NG_PR_elg <- c("K562_2014NG_PR_elg", "Schofield_et_al_K562")
+NG_PR_elg_60to120min <- c("K562_2014NG_PR_60to120min", "Schofield_et_al_K562")
 
 hl_elg_corr <-  cor(log2(hl_elg_df[2:ncol(hl_elg_df)]), use = "pairwise.complete.obs",
                     method = "spearman")
 
+# ggsave(
+#     file.path(hl_figure_dir,
+#               "K562_Amit_total_vs_Schofield_et_al_K562_PR_without_elongation_rate_paper_figure.png"),
+#     plot = scatter_contour_plot(amit_PR, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_Amit_PR", "Schofield_et_al_K562"], 2))), halflife_df = hl_elg_df), width = 5, height = 5)
+#
+# ggsave(file.path(hl_figure_dir,
+#                  "K562_Amit_total_vs_Schofield_et_al_K562_PR_with_elongation_rate_paper_figure.png"),
+#        plot = scatter_contour_plot(amit_PR_elg, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_Amit_total_PR_elg", "Schofield_et_al_K562"], 2)), "\nn=1573"), halflife_df = hl_elg_df), width = 5, height = 5)
+#
+# ggsave(file.path(hl_figure_dir,
+#                  "K562_Amit_total_vs_Schofield_et_al_K562_PR_with_elongation_rate_60to120min_paper_figure.png"),
+#        plot = scatter_contour_plot(amit_PR_elg_60to120min, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_Amit_total_PR_60to120min", "Schofield_et_al_K562"], 2)), "\nn=376"), halflife_df = hl_elg_df), width = 5, height = 5)
+
+hl_elg_narm_df <- hl_elg_df %>% select(K562_2014NG_PR, Schofield_et_al_K562, K562_2014NG_PR_elg) %>% na.omit()
+
+ggsave(
+    file.path(
+        hl_figure_dir,
+        "K562_2014NG_polyA_vs_Schofield_et_al_K562_PR_without_elongation_rate_paper_figure.png"),
+    plot = scatter_contour_plot(NG_PR,
+                                "PR", paste0("ρ = ",
+                                             as.character(round(hl_elg_corr["K562_2014NG_PR",  "Schofield_et_al_K562"], 2)), "\nn=1286"),
+                                halflife_df = hl_elg_narm_df), width = 5, height = 5)
+
 ggsave(
     file.path(hl_figure_dir,
-              "K562_Amit_total_vs_Schofield_et_al_K562_PR_without_elongation_rate_paper_figure.png"),
-    plot = scatter_contour_plot(amit_PR, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_Amit_PR", "Schofield_et_al_K562"], 2))), halflife_df = hl_elg_df), width = 5, height = 5)
+            "K562_2014NG_polyA_vs_Schofield_et_al_K562_PR_with_elongation_rate_paper_figure.png"),
+       plot = scatter_contour_plot(NG_PR_elg, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_2014NG_PR_elg", "Schofield_et_al_K562"], 2)), "\nn=1286"), halflife_df = hl_elg_narm_df), width = 5, height = 5)
 
-ggsave(file.path(hl_figure_dir,
-                 "K562_Amit_total_vs_Schofield_et_al_K562_PR_with_elongation_rate_paper_figure.png"),
-       plot = scatter_contour_plot(amit_PR_elg, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_Amit_total_PR_elg", "Schofield_et_al_K562"], 2)), "\nn=1573"), halflife_df = hl_elg_df), width = 5, height = 5)
-
-ggsave(file.path(hl_figure_dir,
-                 "K562_Amit_total_vs_Schofield_et_al_K562_PR_with_elongation_rate_60to120min_paper_figure.png"),
-       plot = scatter_contour_plot(amit_PR_elg_60to120min, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_Amit_total_PR_60to120min", "Schofield_et_al_K562"], 2)), "\nn=376"), halflife_df = hl_elg_df), width = 5, height = 5)
+ggsave(
+    file.path(hl_figure_dir,
+            "K562_2014NG_polyA_vs_Schofield_et_al_K562_PR_with_elongation_rate_60to120min_paper_figure.png"),
+       plot = scatter_contour_plot(NG_PR_elg_60to120min, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_2014NG_PR_60to120min", "Schofield_et_al_K562"], 2)), "\nn=282"), halflife_df = hl_elg_df), width = 5, height = 5)
 
 # cv and quantile
 cv <- function(vec) {
@@ -232,26 +274,30 @@ cv <- function(vec) {
 }
 
 hl_el_cv <- hl_df %>%
-    select(c("ensembl_gene_id", tidyselect::all_of(amit_PR))) %>%
+    # select(c("ensembl_gene_id", tidyselect::all_of(amit_PR))) %>%
+    select(c("ensembl_gene_id", tidyselect::all_of(NG_PR))) %>%
     left_join(elg_rate, by = "ensembl_gene_id") %>%
     left_join(elg_rate_alex, by = "ensembl_gene_id")
 
 hl_el_cv %>%
-    select(K562_Amit_PR, elongation_rate) %>%
+    # select(K562_Amit_PR, elongation_rate) %>%
+    select(K562_2014NG_PR, elongation_rate) %>%
     na.omit() %>%
     # map(cv)
     map(quantile, probs = c(0.05, 0.1, 0.5, 0.9, 0.95))
 
 hl_el_cv %>%
-    select(K562_Amit_PR, Rate_60to120min) %>%
+    select(K562_2014NG_PR, Rate_60to120min) %>%
     na.omit() %>%
     # map(cv)
     map(quantile, probs = c(0.05, 0.1, 0.5, 0.9, 0.95))
 
 # top 50% genes
-amit_hl <- read_csv(file.path(root_dir, "output/half_life/table/half_life_K562_Amit_total_RNA.csv"))
+# amit_hl <- read_csv(file.path(root_dir, "output/half_life/table/half_life_K562_Amit_total_RNA.csv"))
 
-amit_hl %>%
+NG_hl <- read_csv(file.path(root_dir, "output/half_life/table/half_life_K562_2014NG_polyA_RNA.csv"))
+
+NG_hl %>%
     filter(TPM_PROseq > median(TPM_PROseq)) %>%
     select(ensembl_gene_id, half_life) %>%
     left_join(hl_published_df, by = "ensembl_gene_id") %>%
