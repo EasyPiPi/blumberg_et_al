@@ -6,3 +6,5 @@
 *.pdf
 blumberg_et_al/
 *.png
+
+output/resource/hg38/transcript_coordinates\.bed
