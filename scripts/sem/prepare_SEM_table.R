@@ -80,7 +80,7 @@ histone_dfs <-
                             read_delim, delim = '\t')) %>%
     mutate(output_df =
                map(histone_df, ~ .x %>%
-                       left_join(exp_df,by = c("V1" = "ensembl_transcript_id")) %>%
+                       left_join(exp_df,by = "ensembl_transcript_id") %>%
                        na.omit()))
 
 walk2(histone_dfs$output_df, file.path(sem_data_dir, paste0(histone_dfs$file_name, ".csv")), write_csv)
