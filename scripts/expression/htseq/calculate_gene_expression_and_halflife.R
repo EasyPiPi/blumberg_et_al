@@ -1,6 +1,7 @@
 library(tidyverse)
 library(broom)
 library(MatchIt)
+library(ggpubr)
 
 #### calculate gene expression using concat libraries and dominant transcript annotation ####
 root_dir <- "~/Desktop/github_repo/blumberg_et_al"
@@ -277,6 +278,7 @@ get_half_life <- function(proseq_df, rnaseq_df){
         left_join(rnaseq_df, suffix = c("_PROseq", "_RNAseq"), by = "ensembl_transcript_id") %>%
         # filter by expression
         filter(TPM_PROseq >= 10, TPM_RNAseq > 1) %>%
+        # filter(TPM_PROseq >= 0, TPM_RNAseq > 0) %>%
         mutate(half_life = TPM_RNAseq / TPM_PROseq) %>%
         filter(!is.na(half_life))
 }
@@ -360,11 +362,34 @@ df %>%
 ggsave("K562_2014NG_halflife_PR_spliced_vs_nonspliced.png", path = file.path(hl_dir, "figure"), width = 7, height = 5)
 
 # export expression for data from 2014NG + ENCODE
+df <- df %>% na.omit()
+
 df %>%
-    na.omit() %>%
     # write_csv(file.path(hl_dir, "table", "half_life_K562_Amit_total_RNA.csv"))
     write_csv(file.path(hl_dir, "table", "half_life_K562_2014NG_polyA_RNA.csv"))
 
+#### plot PRO-seq vs. RNA-seq ####
+df <- df %>% mutate_if(is.numeric, log2)
+
+p <- ggscatter(df, x = "TPM_PROseq", y = "half_life",
+          facet.by = "biotype",
+          color = "black", alpha = 0.2, # shape = 21, size = 3, # Points color, shape and size
+          add = "reg.line",  # Add regressin line
+          add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
+          conf.int = TRUE, # Add confidence interval
+          cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+          cor.coeff.args = list(method = "spearman", label.x = 3,
+                                label.sep = "\n", cor.coef.name = "rho"),
+          # xlab = "DENR estimate (TPM)",
+          # ylab = "True abundance (TPM)"
+          xlab = expression("PRO-seq "*log[2]*"(TPM)"),
+          ylab = expression(paste(log[2], "(T"["1/2"] ^ "PR", ")", sep = ""))
+)
+
+ggsave(file.path(hl_dir, "figure", "K562_2014NG_polyA_RNA_PROseq_vs_PR_halflife.png"),
+       plot = p, width = 10, height = 8)
+
+table(df$biotype)
 # amit_proseq <- TPM_melted_dfs %>% filter(group == "K562_Amit") %>%
 #     select(PROseq) %>% unnest(cols = c(PROseq))
 # amit_rnaseq <- TPM_melted_dfs %>% filter(group == "K562_Amit") %>%
@@ -391,7 +416,7 @@ NGENCODE_exp <- NG_proseq %>%
 NGENCODE_exp %>%
     write_csv(file.path(exp_df_dir, "expression_K562_2014NG_polyA_RNA.csv"))
 
-# correct PRO-seq with elongation rate
+#### correct PRO-seq with elongation rate ####
 elg_rate <- read_csv(file.path(root_dir, "data/elongation_rate/veloso_et_al/K562_elongation_rate.csv"))
 colnames(elg_rate) <- c("ensembl_gene_id", "elongation_rate", "expression")
 elg_rate <- elg_rate[elg_rate$elongation_rate > 0, ] %>% select(ensembl_gene_id, elongation_rate)

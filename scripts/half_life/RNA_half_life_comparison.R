@@ -284,13 +284,13 @@ hl_el_cv %>%
     select(K562_2014NG_PR, elongation_rate) %>%
     na.omit() %>%
     # map(cv)
-    map(quantile, probs = c(0.05, 0.1, 0.5, 0.9, 0.95))
+    map(quantile, probs = c(0, 0.05, 0.1, 0.5, 0.9, 0.95, 1))
 
 hl_el_cv %>%
     select(K562_2014NG_PR, Rate_60to120min) %>%
     na.omit() %>%
     # map(cv)
-    map(quantile, probs = c(0.05, 0.1, 0.5, 0.9, 0.95))
+    map(quantile, probs = c(0, 0.05, 0.1, 0.5, 0.9, 0.95, 1))
 
 # top 50% genes
 # amit_hl <- read_csv(file.path(root_dir, "output/half_life/table/half_life_K562_Amit_total_RNA.csv"))
