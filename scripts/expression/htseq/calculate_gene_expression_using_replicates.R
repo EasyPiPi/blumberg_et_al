@@ -1,6 +1,7 @@
 library(tidyverse)
 library(corrplot)
 library(skimr)
+library(ggpubr)
 
 root_dir <- "~/Desktop/github_repo/blumberg_et_al"
 
@@ -156,3 +157,29 @@ for (i in 1:length(corr_mx)) {
     corrplot_partial(corr_mx[[i]]))
 }
 
+# scatter plot
+scatter_plot <- function(df, x_col, y_col, lab = "PRO-seq") {
+    ggscatter(df, x = x_col, y = y_col,
+              color = "black", alpha = 0.2,
+              # shape = 21, size = 3, # Points color, shape and size
+              add = "reg.line",  # Add regressin line
+              add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
+              conf.int = TRUE, # Add confidence interval
+              cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+              cor.coeff.args = list(method = "pearson", label.x = -5,
+                                    label.sep = "\n", cor.coef.name = "r"),
+              xlab = as.expression(bquote(.(lab)*" rep-1 log"[2]*"(TPM)")),
+              ylab = as.expression(bquote(.(lab)*" rep-2 log"[2]*"(TPM)"))
+    )
+}
+
+p <- scatter_plot(log2TPM$PROseq_K562_ENCODE_polyA_RNA_pc_linc_as,
+             x_col = "K562_PROseq_1_PROseq", y_col = "K562_PROseq_2_PROseq")
+ggsave(file.path(exp_fig_dir, "proseq_rep_expression_correlation_scatter.png"),
+       p, width = 5, height = 5)
+
+p <- scatter_plot(log2TPM$RNAseq_ex_K562_ENCODE_polyA_RNA_pc_linc_as,
+                  x_col = "polyadenylated_mRNA_1_RNAseq_ex", y_col = "polyadenylated_mRNA_2_RNAseq_ex",
+                  lab = "RNA-seq")
+ggsave(file.path(exp_fig_dir, "rnaseq_rep_expression_correlation_scatter.png"),
+       p, width = 5, height = 5)
