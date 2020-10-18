@@ -193,12 +193,12 @@ scatter_contour_plot <- function(amit_cols, xlab, label, c1 = -6, c2 = 4, halfli
 
 ggsave(
     file.path(hl_figure_dir, "K562_2014NG_vs_Schofield_et_al_K562_PR_paper_figure.png"),
-    plot = scatter_contour_plot(tidyselect::all_of(NG_PR), "PR", "ρ = 0.71\nn=4351"),
+    plot = scatter_contour_plot(tidyselect::all_of(NG_PR), "PR", "n = 4351\nρ = 0.71"),
     width = 6, height = 5)
 
 ggsave(
     file.path(hl_figure_dir, "K562_2014NG_vs_Schofield_et_al_K562_IE_paper_figure.png"),
-    plot = scatter_contour_plot(tidyselect::all_of(NG_IE), "IE", "ρ = 0.47\nn=3629",
+    plot = scatter_contour_plot(tidyselect::all_of(NG_IE), "IE", "n = 3629\nρ = 0.47",
                                 c1 = -4, c2 = 6), width = 5, height = 5)
 
 # Considering Elongation rate
@@ -254,19 +254,22 @@ ggsave(
         hl_figure_dir,
         "K562_2014NG_polyA_vs_Schofield_et_al_K562_PR_without_elongation_rate_paper_figure.png"),
     plot = scatter_contour_plot(NG_PR,
-                                "PR", paste0("ρ = ",
-                                             as.character(round(hl_elg_corr["K562_2014NG_PR",  "Schofield_et_al_K562"], 2)), "\nn=1286"),
+                                "PR", paste0("n = 1286\n",
+                                             "ρ = ",
+                                             as.character(round(hl_elg_corr["K562_2014NG_PR",
+                                                                            "Schofield_et_al_K562"], 2))
+                                             ),
                                 halflife_df = hl_elg_narm_df), width = 5, height = 5)
 
 ggsave(
     file.path(hl_figure_dir,
             "K562_2014NG_polyA_vs_Schofield_et_al_K562_PR_with_elongation_rate_paper_figure.png"),
-       plot = scatter_contour_plot(NG_PR_elg, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_2014NG_PR_elg", "Schofield_et_al_K562"], 2)), "\nn=1286"), halflife_df = hl_elg_narm_df), width = 5, height = 5)
+       plot = scatter_contour_plot(NG_PR_elg, "PR", paste0("n = 1286\n", "ρ = ", as.character(round(hl_elg_corr["K562_2014NG_PR_elg", "Schofield_et_al_K562"], 2))), halflife_df = hl_elg_narm_df), width = 5, height = 5)
 
 ggsave(
     file.path(hl_figure_dir,
             "K562_2014NG_polyA_vs_Schofield_et_al_K562_PR_with_elongation_rate_60to120min_paper_figure.png"),
-       plot = scatter_contour_plot(NG_PR_elg_60to120min, "PR", paste0("ρ = ", as.character(round(hl_elg_corr["K562_2014NG_PR_60to120min", "Schofield_et_al_K562"], 2)), "\nn=282"), halflife_df = hl_elg_df), width = 5, height = 5)
+       plot = scatter_contour_plot(NG_PR_elg_60to120min, "PR", paste0("n = 282\n", "ρ = ", as.character(round(hl_elg_corr["K562_2014NG_PR_60to120min", "Schofield_et_al_K562"], 2))), halflife_df = hl_elg_df), width = 5, height = 5)
 
 # cv and quantile
 cv <- function(vec) {

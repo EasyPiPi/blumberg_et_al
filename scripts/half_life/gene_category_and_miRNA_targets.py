@@ -20,7 +20,6 @@ import pylab
 import statsmodels.formula.api as smf
 from scipy import stats
 from statsmodels.distributions.empirical_distribution import ECDF
-from sklearn.utils import resample
 
 from math import isnan
 
@@ -38,8 +37,8 @@ all_gene_hl = pd.read_csv(os.path.join(root_dir, "output/half_life/table/half_li
 genetype = pd.read_csv(os.path.join(root_dir, "data/id_mapper/genetype.csv"), index_col = 0)
 protein_coding = genetype[(genetype == "protein_coding").values].index
 
-# all_gene_hl = all_gene_hl[['K562_Amit_PR']].dropna() 
-all_gene_hl = all_gene_hl[['K562_2014NG_PR']].dropna() 
+# all_gene_hl = all_gene_hl[['K562_Amit_PR']].dropna()
+all_gene_hl = all_gene_hl[['K562_2014NG_PR']].dropna()
 all_gene_hl = all_gene_hl[all_gene_hl.index.isin(protein_coding)]
 
 #################################################################
@@ -53,7 +52,7 @@ miRNA_target_split_gb = miRNA_target_split.groupby("miR Family")
 miRNA_target_pieces = dict(list(miRNA_target_split_gb))
 
 #for miRNA, df in miRNA_target_pieces.items():
-#    
+#
 #    print(miRNA)
 #    print(df.head)
 
@@ -64,38 +63,38 @@ def target_plot_df(miRNA_name):
     # drop zero values
     df_targets_boxplot = all_gene_hl[all_gene_hl.index.isin(miRNA_target_pieces[miRNA_name]['Gene ID'])]
     df_non_targets_boxplot = all_gene_hl[~all_gene_hl.index.isin(miRNA_target_pieces[miRNA_name]['Gene ID'])]
-    
-    print("The number of zero values in targets' half lives is " + str((df_targets_boxplot == 0).sum()))    
+
+    print("The number of zero values in targets' half lives is " + str((df_targets_boxplot == 0).sum()))
     df_targets_boxplot = df_targets_boxplot.replace(0, np.nan)
-    
+
     print("The number of zero values in targets' half lives is " + str((df_non_targets_boxplot == 0).sum()))
     df_non_targets_boxplot = df_non_targets_boxplot.replace(0, np.nan)
-    
-    
+
+
     df_targets_boxplot.columns = [miRNA_name + ' targets ']
     df_non_targets_boxplot.columns = [miRNA_name + ' non-targets ']
-    
+
     print('--------------------------------')
-    
+
     if not df_targets_boxplot.iloc[:,0].dropna().empty:
         group_1_p = stats.ks_2samp(np.log2(df_targets_boxplot.iloc[:,0].dropna()), np.log2(df_non_targets_boxplot.iloc[:,0].dropna())).pvalue
         target_number = (~df_targets_boxplot.isna()).sum().values
         non_target_number = (~df_non_targets_boxplot.isna()).sum().values
-        
-        print('KS test for group1: p = %.3e' % group_1_p) 
+
+        print('KS test for group1: p = %.3e' % group_1_p)
         print('Target Number: ', target_number)
         print('Non-Target Number:', non_target_number)
-            
+
         df_targets_plot_long = pd.concat([pd.melt(df_targets_boxplot), pd.melt(df_non_targets_boxplot)], ignore_index=True)
-        
+
         # Drop all half life which is equal to zero
-        
+
         # df_targets_plot_long.replace(0, np.nan)
         df_targets_plot_long.value = np.log2(df_targets_plot_long.value)
         df_targets_plot_long.dropna(inplace = True)
 
         return df_targets_plot_long, group_1_p, target_number, non_target_number
-    
+
     else:
         return pd.DataFrame(), np.nan, np.nan, np.nan
 
@@ -125,22 +124,22 @@ i = 0
 sns.set(font_scale=1.3)
 sns.set_style("ticks")
 
-for miRNA_name in miRNA_target_pieces.keys():    
-    
+for miRNA_name in miRNA_target_pieces.keys():
+
     all_gene_hl[all_gene_hl.index.isin(miRNA_target_pieces[miRNA_name]['Gene ID'])]
-   
-    df_targets_plot_long, group_1_p, target_number, non_target_number = target_plot_df(miRNA_name) 
-    
+
+    df_targets_plot_long, group_1_p, target_number, non_target_number = target_plot_df(miRNA_name)
+
     KS_test_target_number_summary.loc[i, 'miRNA_name'] = miRNA_name
     KS_test_target_number_summary.loc[i, 'group_1_p'] = group_1_p
     KS_test_target_number_summary.loc[i, 'target_number'] = target_number
     KS_test_target_number_summary.loc[i, 'non_target_number'] = non_target_number
-    
+
     if not df_targets_plot_long.empty:
         CDF_plot(df_targets_plot_long, color=None)
         pylab.savefig(os.path.join(mir_fig_dir, ("_").join(miRNA_name.split("/")) + "_targets_half_life_CDF_20190514.pdf"))
         plt.close()
-        
+
     i = i+1
 
 KS_test_target_number_summary.columns = ['miRNA_name', 'KS_test_p_value', 'target_number', 'non_target_number']
@@ -158,37 +157,37 @@ def gencat_plot_df(gene_name_1, gene_name_2, name_1, name_2, name_3):
     # drop zero values
     df_targets_boxplot_1 = all_gene_hl[all_gene_hl.index.isin(gene_name_1)]
     df_targets_boxplot_2 = all_gene_hl[all_gene_hl.index.isin(gene_name_2)]
-    
+
     df_non_targets_boxplot = all_gene_hl[~all_gene_hl.index.isin(pd.concat([gene_name_1, gene_name_2]))]
-    
+
     df_targets_boxplot_1.columns = [name_1]
     df_targets_boxplot_2.columns = [name_2]
     df_non_targets_boxplot.columns = [name_3]
-    
+
     print('--------------------------------')
-    
+
     group_1_p = stats.ks_2samp(np.log2(df_targets_boxplot_1.iloc[:,0].dropna()), np.log2(df_non_targets_boxplot.iloc[:,0].dropna())).pvalue
     target_number = (~df_targets_boxplot_1.isna()).sum().values
     non_target_number = (~df_non_targets_boxplot.isna()).sum().values
-    
-    print('KS test for ribosomal proteins vs. other genes: p = %.3e' % group_1_p) 
+
+    print('KS test for ribosomal proteins vs. other genes: p = %.3e' % group_1_p)
     print('Ribosomal protein Number: ', target_number)
     print('Other gene Number:', non_target_number)
-    
+
     print('--------------------------------')
-    
+
     group_2_p = stats.ks_2samp(np.log2(df_targets_boxplot_2.iloc[:,0].dropna()), np.log2(df_non_targets_boxplot.iloc[:,0].dropna())).pvalue
     target_number = (~df_targets_boxplot_2.isna()).sum().values
     non_target_number = (~df_non_targets_boxplot.isna()).sum().values
-    
-    print('KS test for zinc-finger proteins vs. other genes: p = %.3e' % group_1_p) 
+
+    print('KS test for zinc-finger proteins vs. other genes: p = %.3e' % group_1_p)
     print('Zinc-finger Number: ', target_number)
     print('Other gene Number:', non_target_number)
-    
+
     df_targets_plot_long = pd.concat([pd.melt(df_targets_boxplot_1), pd.melt(df_targets_boxplot_2), pd.melt(df_non_targets_boxplot)], ignore_index=True)
-    
+
     # Drop all half life which is equal to zero
-    
+
     df_targets_plot_long = df_targets_plot_long.replace(0, np.nan)
     df_targets_plot_long.dropna(inplace = True)
     df_targets_plot_long.value = np.log2(df_targets_plot_long.value)
@@ -259,7 +258,7 @@ plot_ci("Zinc-fingers")
 plt.xlabel(r'log$_2$$($T$_1$$_/$$_2$$^P$$^R$$)$')
 plt.ylabel('ECDF')
 plt.tight_layout()
-pylab.savefig(os.path.join(genecat_fig_dir, "ribosomal_proteins_and_zinc_fingers_proteins_half_life_CDF.pdf"))
+pylab.savefig(os.path.join(genecat_fig_dir, "ribosomal_proteins_and_zinc_fingers_proteins_half_life_ECDF.pdf"))
 plt.close()
 
 #### for several selected miRNAs ####
@@ -271,15 +270,15 @@ selected_miRs = ["miR-182-5p", "miR-125-5p", "miR-19-3p"]
 
 i = 0
 
-for miRNA_name in selected_miRs:    
+for miRNA_name in selected_miRs:
     print(miRNA_name)
-    df_targets_plot_long, group_1_p, target_number, non_target_number = target_plot_df(miRNA_name) 
+    df_targets_plot_long, group_1_p, target_number, non_target_number = target_plot_df(miRNA_name)
     print("--------------------------------")
     KS_test_target_number_summary.loc[i, 'miRNA_name'] = miRNA_name
     KS_test_target_number_summary.loc[i, 'group_1_p'] = group_1_p
     KS_test_target_number_summary.loc[i, 'target_number'] = target_number
     KS_test_target_number_summary.loc[i, 'non_target_number'] = non_target_number
-    
+
     # Bootstrap and visualization
     # Step 1 Bootstrap
     d = pd.concat(sample_rep(df_targets_plot_long, replicates=1000), keys=range(1, 1001), names=["replicate"])
@@ -301,6 +300,5 @@ for miRNA_name in selected_miRs:
     plt.tight_layout()
     pylab.savefig(os.path.join(mir_fig_dir, ("_").join(miRNA_name.split("/")) + "_targets_half_life_ECDF.pdf"))
     plt.close()
-    
-    i = i+1
 
+    i = i+1

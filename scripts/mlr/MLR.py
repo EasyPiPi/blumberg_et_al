@@ -141,6 +141,9 @@ var_dict = {'gc_5utr' : 'G+C 5\'UTR', 'gc_cds': 'G+C cds', 'gc_3utr' : 'G+C 3\'U
 spliced_MLR["variables"] = spliced_MLR.index
 spliced_MLR = spliced_MLR.replace(var_dict)
 
+study_dict = {"Blumberg_et_al": "Blumberg_et_al MLR", "Mele_et_al": "Mele_et_al MLR", "Schofield_et_al": "Schofield_et_al MLR", "Wachutka_et_al": "Wachutka_et_al MLR"}
+spliced_MLR = spliced_MLR.replace(study_dict)
+
 # https://stackoverflow.com/questions/43159528/error-bars-with-seaborn-and-stripplot
 spliced_MLR.sort_values(by = ["Study", "variables"], inplace=True)
 spliced_MLR["yerr"] = spliced_MLR['coefficient'] - spliced_MLR[0]
